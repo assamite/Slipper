@@ -100,9 +100,10 @@ def visible(element):
 		return False
 	return True
 
-def slip(source):
+def slip(source, url):
 	SEXWORDS = read_wordnet_sexuality(os.path.join(settings.SITE_ROOT, "slip", "sexuality.txt"))
 	soup = bs(source)
+	logger = logging.getLogger('slipper.slip')
 	
 	try:
 		for t in soup.body.descendants:
@@ -117,9 +118,9 @@ def slip(source):
 				replaced = replace_document_words(tx, tagged_text, SEXWORDS)
 				t.string = "".join([w+" " for w in replaced])
 	except:
-		logger = logging.getLogger('slipper.slip')
-		logger.info("utils.slip has blown, with message: \n äs" % traceback.format_exc())
+		logger.info("utils.slip has blown, with message: \n %s" % traceback.format_exc())
 		
+	logger.info("Finished tagging source from: %s " % url)
 	return soup.prettify()
 
 #SEXWORDS = read_wordnet_sexuality("./sexuality.txt")

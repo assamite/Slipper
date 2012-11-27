@@ -19,7 +19,7 @@ def freudify(request):
 		if form.is_valid():
 			url = request.POST['url']  
 			source = get_source(url)
-			freudified = slip(source)
+			freudified = slip(source, url)
 			return HttpResponse(content=freudified)
 			#return HttpResponseRedirect(url)
 

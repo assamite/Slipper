@@ -1,4 +1,5 @@
 import os
+import sys
 
 # Django settings for slipper project.
 
@@ -154,7 +155,7 @@ LOGGING = {
 			'level':'DEBUG',
 			'class':'logging.StreamHandler',
 			'formatter': 'verbose',
-			'stream': 'sys.stdout',
+			'stream': sys.stdout,
 		},
 		'slip': {
 			'level':'DEBUG',
@@ -171,4 +172,5 @@ LOGGING = {
 			'propagate': False,
 			'level': 'DEBUG',
 		}
+	}
 }

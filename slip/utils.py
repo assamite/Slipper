@@ -9,6 +9,9 @@ import nltk
 import Levenshtein as lv
 from slipper import settings
 
+import logging
+import traceback
+
 SEXWORDS = ""
 
 repl_tags = {'NN':'n','JJ':'a','VB':'v','RB':'r'}
@@ -101,30 +104,22 @@ def slip(source):
 	SEXWORDS = read_wordnet_sexuality(os.path.join(settings.SITE_ROOT, "slip", "sexuality.txt"))
 	soup = bs(source)
 	
-	for t in soup.body.descendants:
-		if not hasattr(t, 'name'): continue
-		#t.string = t.replace(u'\xa0', u' ')
-		if visible(t) and hasattr(t, 'string'):
-			if t.string == None: continue
-			tx = nltk.word_tokenize(t.string)
-			if len(tx) < 3: continue
-			tagged_text = nltk.pos_tag(tx)
-			if len(tagged_text) < 3: continue
-			replaced = replace_document_words(tx, tagged_text, SEXWORDS)
-			t.string = "".join([w+" " for w in replaced])
-	
-	'''
-	texts = filter(visible, soup.findAll(text=True))
-	for t in texts:
-		tx = nltk.word_tokenize(t.string)
-		tagged_text = nltk.pos_tag(tx)
-		if len(tagged_text) < 3: continue
-		replaced = replace_document_words(tx, tagged_text, SEXWORDS)
-		t.string = replaced
-		print t.string
-	'''
-	
-	
+	try:
+		for t in soup.body.descendants:
+			if not hasattr(t, 'name'): continue
+			#t.string = t.replace(u'\xa0', u' ')
+			if visible(t) and hasattr(t, 'string'):
+				if t.string == None: continue
+				tx = nltk.word_tokenize(t.string)
+				if len(tx) < 3: continue
+				tagged_text = nltk.pos_tag(tx)
+				if len(tagged_text) < 3: continue
+				replaced = replace_document_words(tx, tagged_text, SEXWORDS)
+				t.string = "".join([w+" " for w in replaced])
+	except:
+		logger = logging.getLogger('slipper.slip')
+		logger.info("utils.slip has blown, with message: \n äs" % traceback.format_exc())
+		
 	return soup.prettify()
 
 #SEXWORDS = read_wordnet_sexuality("./sexuality.txt")

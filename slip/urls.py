@@ -8,8 +8,8 @@ from views import home, freudify
 urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'slipper.views.home', name='home'),
-    url(r'home', home, name = 'slip_home_url'),
-    url(r'freudify', freudify, name = "slip_freudify_url")
+    url(r'^home', home, name = 'slip_home_url'),
+    url(r'^freudify', freudify, name = "slip_freudify_url")
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),

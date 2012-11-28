@@ -16,6 +16,7 @@ html
 	overflow:hidden;
 	min-width: 900px;
 	min-height: 300px;
+	background-color:rgba(109, 123, 141, 0.4);
 }
 
 body
@@ -49,6 +50,11 @@ body
 #submit_button 
 {
 	font-size: larger;
+	color: rgba(120, 106, 98, 1);
+	background-color: rgba(109, 123, 141, 0.005);
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
 }
 
 #url_form p
@@ -62,6 +68,11 @@ body
 	margin-right: auto;
 	width: 500px;	
 	font-size: 110%;
+	color: rgba(140, 126, 108, 1);
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+
 }
 
 /* SITE'S FOOTER */

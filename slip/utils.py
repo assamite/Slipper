@@ -7,7 +7,7 @@ import urllib2
 from bs4 import BeautifulSoup as bs
 import nltk
 import Levenshtein as lv
-from slipper import settings
+from Slipper import settings
 
 import logging
 import traceback

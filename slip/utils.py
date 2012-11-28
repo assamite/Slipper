@@ -18,11 +18,17 @@ SEXWORDS = ""
 repl_tags = {'NN':'n','JJ':'a','VB':'v','RB':'r'}
 
 def get_source(url):
+	logger = logging.getLogger('Slipper.slip')
+	logger.info("Getting source from: %s" % url)
 	try:
 		response = urllib2.urlopen(url)
+		logger.info("Got %s response from %s" % (response.getcode(), url))
 	except:
+		logger.error("Could not get source from: %s" % url)
+		logger.error("Error stack \n %s" % traceback.format_exc())
 		return None
-	if response.getcode() > 399: return None
+	if response.getcode() > 399: 
+		return None
 	page_source = response.read()
 	return page_source
 
@@ -127,6 +133,7 @@ def slip(source, url):
 				t.string = "".join([w+" " for w in replaced])
 	except:
 		logger.info("utils.slip has blown, with message: \n %s" % traceback.format_exc())
+		return None
 		
 	logger.info("Finished tagging source from: %s " % url)
 	return soup.prettify()

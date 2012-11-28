@@ -1,3 +1,5 @@
+import logging
+
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.template import RequestContext
@@ -24,6 +26,8 @@ def freudify(request, url = None):
 		if source is None: 
 			return HttpResponseRedirect(reverse('slip_home_url'))
 		freudified = slip(source, url)
+		if freudified is None:
+			return HttpResponseRedirect(reverse('slip_home_url'))
 		return HttpResponse(content=freudified)
 		
 	return HttpResponseRedirect(reverse('slip_home_url'))

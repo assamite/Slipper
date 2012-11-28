@@ -106,7 +106,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
 )
 
-ROOT_URLCONF = 'slipper.urls'
+ROOT_URLCONF = 'Slipper.urls'
 
 TEMPLATE_DIRS = (
 	os.path.join(SITE_ROOT, 'templates/')

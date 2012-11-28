@@ -167,7 +167,7 @@ LOGGING = {
 		}
 	},
 	'loggers': {
-		'slipper.slip': {
+		'Slipper.slip': {
 			'handlers': ['console', 'slip'],
 			'propagate': False,
 			'level': 'DEBUG',

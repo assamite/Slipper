@@ -4,6 +4,7 @@ import sys
 import operator
 import random
 import urllib2
+from django.core.urlresolvers import reverse
 from bs4 import BeautifulSoup as bs
 import nltk
 import Levenshtein as lv
@@ -17,7 +18,11 @@ SEXWORDS = ""
 repl_tags = {'NN':'n','JJ':'a','VB':'v','RB':'r'}
 
 def get_source(url):
-	response = urllib2.urlopen(url)
+	try:
+		response = urllib2.urlopen(url)
+	except:
+		return None
+	if response.getcode() > 399: return None
 	page_source = response.read()
 	return page_source
 
@@ -76,10 +81,11 @@ def replace_document_words(words, tagged_words, s_words):
 		if tag in ["NN", "JJ", "RB"] :
 			tag = repl_tags[tag]
 			rp = test_levenshtein(2, tag, w, s_words)	
-			if not rp == w:
+			if not rp.lower() == w.lower():
+				if w[0].isupper(): rp = rp.title()
 				altered_words[i] = rp + " (" + w + ")"
 				alter_amount += 1
-	print "Altered %s words" % alter_amount
+	#print "Altered %s words" % alter_amount
 	return altered_words
 
 def test_levenshtein(maxlv, tag, word, sexws):
@@ -103,11 +109,13 @@ def visible(element):
 def slip(source, url):
 	SEXWORDS = read_wordnet_sexuality(os.path.join(settings.SITE_ROOT, "slip", "sexuality.txt"))
 	soup = bs(source)
-	logger = logging.getLogger('slipper.slip')
+	logger = logging.getLogger('Slipper.slip')
 	
 	try:
 		for t in soup.body.descendants:
 			if not hasattr(t, 'name'): continue
+			if t.name == 'a':
+				t['href'] = reverse('slip_freudify_url', kwargs = { 'url': t['href'] })
 			#t.string = t.replace(u'\xa0', u' ')
 			if visible(t) and hasattr(t, 'string'):
 				if t.string == None: continue

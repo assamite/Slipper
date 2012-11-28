@@ -1,4 +1,5 @@
 import logging
+from urlparse import urlparse
 
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
@@ -21,7 +22,15 @@ def freudify(request, url = None):
 		form = URLform(request.POST)
 		if form.is_valid():
 			url = request.POST['url']  
+		else:
+			return HttpResponseRedirect(reverse('slip_home_url'))
 	if url != None:
+		# hack'n'slash because of mod_wsgi rewrite rules that remove double 
+		# slash after domain name
+		if url[:7] != 'http://':
+			url = 'http://' + url[6:]
+			print url
+		
 		source = get_source(url)
 		if source is None: 
 			return HttpResponseRedirect(reverse('slip_home_url'))
@@ -29,5 +38,6 @@ def freudify(request, url = None):
 		if freudified is None:
 			return HttpResponseRedirect(reverse('slip_home_url'))
 		return HttpResponse(content=freudified)
+		
 		
 	return HttpResponseRedirect(reverse('slip_home_url'))

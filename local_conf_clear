@@ -1,3 +1,5 @@
+Copy this as local_conf.py and change settings for your needs.
+
 DEBUG = True
 
 # tuple of 2-tuples: (name, email)
@@ -6,3 +8,6 @@ ADMINS = ()
 # Used for cryptographic thingies (signing)
 # Make your own random key
 UGH_DAT_VERRY_SECRAT_KEYZ = 'I am very special'
+
+# Prefix for the site. If you use this, include '/' in the end, ie. 'slipper/'
+URL_PREFIX = ""

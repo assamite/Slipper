@@ -1,24 +1,23 @@
 import os
 import sys
+import local_conf
 
 # Django settings for slipper project.
 
-DEBUG = True
+DEBUG = local_conf.DEBUG
 TEMPLATE_DEBUG = DEBUG
 
 # Root folder of the site
 SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
 
-ADMINS = (
-    # ('Your Name', 'your_email@example.com'),
-)
+ADMINS = local_conf.ADMINS
 
 MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': '/Users/slinkola/Koulu/lhhc/slipper/sqlite.db',                      # Or path to database file if using sqlite3.
+        'NAME': '',						 # Or path to database file if using sqlite3.
         'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
@@ -90,8 +89,8 @@ STATICFILES_FINDERS = (
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
-# Make this unique, and don't share it with anybody.
-SECRET_KEY = ')+dr40h2wtzcuv059w%@+rip^+jl=-)4a)%!do_-kui)&8yk6@'
+# me me, pick me, I am unique!
+SECRET_KEY = local_conf.UGH_DAT_VERRY_SECRAT_KEYZ 
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (

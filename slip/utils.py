@@ -51,10 +51,7 @@ def read_wordnet_sexuality(filepath):
 				s_words[tag].append(w)
 			except KeyError:
 				s_words[tag] = [w]
-				
-#	for k,v in s_words.items():
-#		print k, [w for w in v]
-		
+	
 	return s_words
 		
 def position_tag_text(text):
@@ -78,18 +75,23 @@ def replace_document_words(words, tagged_words, s_words):
 		versa.
 	'''
 	altered_words = []
+	maxlv = {3: 1, 4: 1, 5: 2, 6: 2, 7:2, 8: 3, 9: 3, 10: 3, 11: 3}
 	alter_amount = 0
 
 	for i, w in enumerate(words):
 		altered_words.append(w)
 		if len(w) < 3: continue
 		tag = tagged_words[i][1][:2]
-		if tag in ["NN", "JJ", "RB"] :
+		if tag in ["NN", "JJ", "RB"]:
 			tag = repl_tags[tag]
-			rp = test_levenshtein(2, tag, w, s_words)	
+			lv = 1
+			if len(w) in maxlv.keys(): lv = maxlv[len(w)]
+			else: lv = 4
+			rp = test_levenshtein(lv, tag, w, s_words)	
 			if not rp.lower() == w.lower():
 				if w[0].isupper(): rp = rp.title()
-				altered_words[i] = rp + " (" + w + ")"
+				if settings.DEBUG: rp += " (" + w + ")"
+				altered_words[i] = rp	
 				alter_amount += 1
 	#print "Altered %s words" % alter_amount
 	return altered_words

@@ -4,6 +4,7 @@ import sys
 import operator
 import random
 import urllib2
+from urlparse import urljoin
 from django.core.urlresolvers import reverse
 from bs4 import BeautifulSoup as bs
 import nltk
@@ -120,11 +121,28 @@ def slip(source, url):
 	logger = logging.getLogger('Slipper.slip')
 	
 	try:
+		# fix relative paths. Horrible code.
+		for t in soup.html.descendants: 
+			if not hasattr(t, 'name'): continue
+			if 'href' in t.attrs:
+				t['href'] = urljoin(url, t['href'])
+			if t.name == 'a' and 'href' in t.attrs:
+				t['href'] = reverse('slip_freudify_url', kwargs = { 'url': t['href'] })
+			if t.name == 'script' and 'src' in t.attrs:
+				t['src'] = urljoin(url, t['src'])
+				
+			# TODO: FIX ME
+			if t.name == 'style' and hasattr(t, 'contents'):
+				cat = []
+				for c in t.contents:
+					for m in re.finditer(r"@import(\s+)\"(.*)\"", c):
+						for n in re.findall(r"\"(.*)\"", m.group()): 
+							cat.append("@import \"%s\";" % urljoin("http://gutenberg.org", n))
+					t.string = t.string + " ".join([w + " " for w in cat])
+		
 		for t in soup.body.descendants:
 			if not hasattr(t, 'name'): continue
-			if t.name == 'a':
-				t['href'] = reverse('slip_freudify_url', kwargs = { 'url': t['href'] })
-			#t.string = t.replace(u'\xa0', u' ')
+
 			if visible(t) and hasattr(t, 'string'):
 				if t.string == None: continue
 				tx = nltk.word_tokenize(t.string)

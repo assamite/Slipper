@@ -9,5 +9,5 @@ ADMINS = ()
 # Make your own random key
 UGH_DAT_VERRY_SECRAT_KEYZ = 'I am very special'
 
-# Prefix for the site. If you use this, include '/' in the end, ie. 'slipper/'
-URL_PREFIX = ""
+# This might need some local prefix, depending on apache, etc.
+MEDIA_URL = "/media/"

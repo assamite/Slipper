@@ -121,6 +121,32 @@ def replace_word(maxlv, tag, word, sexws):
 		return levenshteins[0][0]	# to be coherent with these, so that some 
 	else:							# sense is maintained in the text.
 		return word
+
+def prettify_sentence(replaced_words):
+	pretty_sentence = ""
+	last_word = ""
+	enc_hyphen = False
+	
+	for w in replaced_words:
+		if w in ["``"]:
+			pretty_sentence += " \""
+		elif w == "''":
+			pretty_sentence += "\""
+		elif w in [',', '!', '?', '.', '%', '\"', "n't", "'re", "'s", ";", ":", ")", "]", "}"]:
+			pretty_sentence += w
+		elif w in ['\'']: 
+			if enc_hyphen:
+				pretty_sentence += w
+				enc_hyphen = False	
+		elif last_word in ["``", "(", "[", "{"]:
+			pretty_sentence += w	
+		else:
+			pretty_sentence += " " + w
+		if w.startswith("'") and w not in ["'m", "'ld", "'t", "'re", "'s"]: 
+			enc_hyphen = True
+		last_word = w
+	
+	return pretty_sentence
 	
 # TODO: FIX ME, probably not everything is correct in here.	
 def visible_html_tag(element):
@@ -189,7 +215,7 @@ def fix_relative_paths(soup, url):
 				for m in re.finditer(r"@import(\s+)\"(.*)\"", c):
 					for n in re.findall(r"\"(.*)\"", m.group()): 
 						cat.append("@import \"%s\";" % urljoin(url, n))
-			t.string = t.string + " " + "".join([w + " " for w in cat])
+			t.string = t.string + " " + " ".join([w for w in cat])
 				
 def freudify_soup(soup):
 	'''
@@ -220,7 +246,7 @@ def freudify_soup(soup):
 				tagged_text = nltk.pos_tag(tx)
 				if len(tagged_text) < 3: continue
 				replaced = replace_document_words(tx, tagged_text, SEXWORDS)
-				replaced_string = "".join([w+" " for w in replaced])
+				replaced_string += " " + prettify_sentence(replaced)
 			if len(replaced_string) > 0:
 				t.string = replaced_string
 

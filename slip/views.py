@@ -26,10 +26,9 @@ def freudify(request, url = None):
 			return HttpResponseRedirect(reverse('slip_home_url'))
 	if url != None:
 		# hack'n'slash because of mod_wsgi rewrite rules that remove double 
-		# slash after domain name
+		# slashes after domain name
 		if url[:7] != 'http://':
 			url = 'http://' + url[6:]
-			print url
 		
 		source = get_source(url)
 		if source is None: 
@@ -38,6 +37,5 @@ def freudify(request, url = None):
 		if freudified is None:
 			return HttpResponseRedirect(reverse('slip_home_url'))
 		return HttpResponse(content=freudified)
-		
-		
+			
 	return HttpResponseRedirect(reverse('slip_home_url'))

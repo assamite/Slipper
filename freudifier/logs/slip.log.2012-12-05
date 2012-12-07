@@ -1,0 +1,544 @@
+INFO 2012-12-04 23:44:12,395 utils 36139 4489510912 Getting source from: http://bbc.co.uk
+INFO 2012-12-04 23:44:13,142 utils 36139 4489510912 Got 200 response from http://bbc.co.uk
+INFO 2012-12-04 23:44:29,148 utils 36139 4489510912 Finished tagging source from: http://bbc.co.uk 
+INFO 2012-12-05 00:04:22,096 utils 36164 4433928192 Getting source from: http://bbc.co.uk
+INFO 2012-12-05 00:04:23,097 utils 36164 4433928192 Got 200 response from http://bbc.co.uk
+INFO 2012-12-05 00:04:39,574 utils 36164 4433928192 Finished tagging source from: http://bbc.co.uk 
+INFO 2012-12-05 11:47:43,700 utils 36397 4455530496 Getting source from: http://bbc.co.uk
+INFO 2012-12-05 11:47:44,448 utils 36397 4455530496 Got 200 response from http://bbc.co.uk
+INFO 2012-12-05 11:48:00,396 utils 36397 4455530496 Finished tagging source from: http://bbc.co.uk 
+INFO 2012-12-05 11:50:35,858 utils 36397 4455530496 Getting source from: http://www.bbc.com/travel/video/my-city/20121127-istanbul
+INFO 2012-12-05 11:50:36,648 utils 36397 4455530496 Got 200 response from http://www.bbc.com/travel/video/my-city/20121127-istanbul
+INFO 2012-12-05 11:50:43,342 utils 36397 4455530496 Finished tagging source from: http://www.bbc.com/travel/video/my-city/20121127-istanbul 
+INFO 2012-12-05 12:04:51,676 utils 36400 4535693312 Getting source from: http://www.bbc.com/travel/video/my-city/20121127-istanbul
+INFO 2012-12-05 12:04:52,617 utils 36400 4535693312 Got 200 response from http://www.bbc.com/travel/video/my-city/20121127-istanbul
+INFO 2012-12-05 12:05:02,769 utils 36400 4535693312 Finished tagging source from: http://www.bbc.com/travel/video/my-city/20121127-istanbul 
+INFO 2012-12-05 12:10:37,903 utils 36411 4428161024 Getting source from: http://www.bbc.com/travel/video/my-city/20121127-istanbul
+INFO 2012-12-05 12:10:38,870 utils 36411 4428161024 Got 200 response from http://www.bbc.com/travel/video/my-city/20121127-istanbul
+INFO 2012-12-05 12:11:17,993 utils 36411 4428161024 Finished tagging source from: http://www.bbc.com/travel/video/my-city/20121127-istanbul 
+INFO 2012-12-05 12:20:23,813 utils 36414 4419313664 Getting source from: http://www.bbc.com/travel/video/my-city/20121127-istanbul
+INFO 2012-12-05 12:20:24,834 utils 36414 4419313664 Got 200 response from http://www.bbc.com/travel/video/my-city/20121127-istanbul
+INFO 2012-12-05 12:20:25,354 utils 36414 4419313664 utils.slip has blown, with message: 
+ Traceback (most recent call last):
+  File "/Users/slinkola/Koulu/lhhc/Slipper/../Slipper/slip/utils.py", line 231, in slip
+    freudify_soup(soup)
+  File "/Users/slinkola/Koulu/lhhc/Slipper/../Slipper/slip/utils.py", line 199, in freudify_soup
+    if visible_html_tag(t) and hasattr(t, 'string'):
+  File "/Users/slinkola/Koulu/lhhc/Slipper/../Slipper/slip/utils.py", line 138, in visible_html_tag
+    if re.match(u'display: none;', element.parent.style):
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/re.py", line 137, in match
+    return _compile(pattern, flags).match(string)
+TypeError: expected string or buffer
+
+INFO 2012-12-05 12:21:01,608 utils 36415 4392128512 Getting source from: http://www.bbc.com/travel/video/my-city/20121127-istanbul
+INFO 2012-12-05 12:21:02,397 utils 36415 4392128512 Got 200 response from http://www.bbc.com/travel/video/my-city/20121127-istanbul
+INFO 2012-12-05 12:21:46,036 utils 36415 4392128512 Finished tagging source from: http://www.bbc.com/travel/video/my-city/20121127-istanbul 
+INFO 2012-12-05 12:24:19,530 utils 36417 4314107904 Getting source from: http://www.bbc.com/travel/video/my-city/20121127-istanbul
+INFO 2012-12-05 12:24:20,372 utils 36417 4314107904 Got 200 response from http://www.bbc.com/travel/video/my-city/20121127-istanbul
+INFO 2012-12-05 12:24:21,656 utils 36417 4314107904 utils.slip has blown, with message: 
+ Traceback (most recent call last):
+  File "/Users/slinkola/Koulu/lhhc/Slipper/../Slipper/slip/utils.py", line 231, in slip
+    freudify_soup(soup)
+  File "/Users/slinkola/Koulu/lhhc/Slipper/../Slipper/slip/utils.py", line 199, in freudify_soup
+    if visible_html_tag(t) and hasattr(t, 'string'):
+  File "/Users/slinkola/Koulu/lhhc/Slipper/../Slipper/slip/utils.py", line 138, in visible_html_tag
+    if re.match(u'display: none;', element.parent['style']):
+  File "/Library/Python/2.7/site-packages/bs4/element.py", line 879, in __getitem__
+    return self.attrs[key]
+KeyError: 'style'
+
+INFO 2012-12-05 12:26:36,048 utils 36419 4371890176 Getting source from: http://www.bbc.com/travel/video/my-city/20121127-istanbul
+INFO 2012-12-05 12:26:36,985 utils 36419 4371890176 Got 200 response from http://www.bbc.com/travel/video/my-city/20121127-istanbul
+INFO 2012-12-05 12:26:37,254 utils 36419 4371890176 utils.slip has blown, with message: 
+ Traceback (most recent call last):
+  File "/Users/slinkola/Koulu/lhhc/Slipper/../Slipper/slip/utils.py", line 232, in slip
+    freudify_soup(soup)
+  File "/Users/slinkola/Koulu/lhhc/Slipper/../Slipper/slip/utils.py", line 200, in freudify_soup
+    if visible_html_tag(t) and hasattr(t, 'string'):
+  File "/Users/slinkola/Koulu/lhhc/Slipper/../Slipper/slip/utils.py", line 139, in visible_html_tag
+    if re.match(u'display: none;', element.parent['style']):
+  File "/Library/Python/2.7/site-packages/bs4/element.py", line 879, in __getitem__
+    return self.attrs[key]
+KeyError: 'style'
+
+INFO 2012-12-05 12:27:36,652 utils 36420 4418023424 Getting source from: http://www.bbc.com/travel/video/my-city/20121127-istanbul
+INFO 2012-12-05 12:27:37,165 utils 36420 4418023424 Got 200 response from http://www.bbc.com/travel/video/my-city/20121127-istanbul
+INFO 2012-12-05 12:27:48,030 utils 36420 4418023424 Finished tagging source from: http://www.bbc.com/travel/video/my-city/20121127-istanbul 
+INFO 2012-12-05 12:36:12,548 utils 36423 4540448768 Getting source from: http://www.bbc.com/travel/video/my-city/20121127-istanbul
+INFO 2012-12-05 12:36:13,429 utils 36423 4540448768 Got 200 response from http://www.bbc.com/travel/video/my-city/20121127-istanbul
+INFO 2012-12-05 12:36:24,656 utils 36423 4540448768 Finished tagging source from: http://www.bbc.com/travel/video/my-city/20121127-istanbul 
+INFO 2012-12-05 12:36:37,305 utils 36423 4540448768 Getting source from: http://www.bbc.com/travel/video/my-city/20121203-ho-chi-minh-city
+INFO 2012-12-05 12:36:37,787 utils 36423 4540448768 Got 200 response from http://www.bbc.com/travel/video/my-city/20121203-ho-chi-minh-city
+INFO 2012-12-05 12:36:44,319 utils 36423 4540448768 Finished tagging source from: http://www.bbc.com/travel/video/my-city/20121203-ho-chi-minh-city 
+INFO 2012-12-05 12:40:28,707 utils 36430 4459134976 Getting source from: http://www.bbc.com/travel/video/my-city/20121127-istanbul
+INFO 2012-12-05 12:40:29,716 utils 36430 4459134976 Got 200 response from http://www.bbc.com/travel/video/my-city/20121127-istanbul
+INFO 2012-12-05 12:40:39,985 utils 36430 4459134976 Finished tagging source from: http://www.bbc.com/travel/video/my-city/20121127-istanbul 
+INFO 2012-12-05 12:43:09,496 utils 36432 4437282816 Getting source from: http://www.bbc.com/travel/video/my-city/20121127-istanbul
+INFO 2012-12-05 12:43:10,200 utils 36432 4437282816 Got 200 response from http://www.bbc.com/travel/video/my-city/20121127-istanbul
+INFO 2012-12-05 12:43:20,506 utils 36432 4437282816 Finished tagging source from: http://www.bbc.com/travel/video/my-city/20121127-istanbul 
+INFO 2012-12-05 12:44:34,990 utils 36433 4455497728 Getting source from: http://www.bbc.com/travel/video/my-city/20121127-istanbul
+INFO 2012-12-05 12:44:35,871 utils 36433 4455497728 Got 200 response from http://www.bbc.com/travel/video/my-city/20121127-istanbul
+INFO 2012-12-05 12:44:46,116 utils 36433 4455497728 Finished tagging source from: http://www.bbc.com/travel/video/my-city/20121127-istanbul 
+INFO 2012-12-05 12:45:50,510 utils 36435 4501762048 Getting source from: http://www.bbc.com/travel/video/my-city/20121127-istanbul
+INFO 2012-12-05 12:45:50,912 utils 36435 4501762048 Got 200 response from http://www.bbc.com/travel/video/my-city/20121127-istanbul
+INFO 2012-12-05 12:46:01,114 utils 36435 4501762048 Finished tagging source from: http://www.bbc.com/travel/video/my-city/20121127-istanbul 
+INFO 2012-12-05 12:49:32,629 utils 36438 4569571328 Getting source from: http://www.bbc.com/travel/video/my-city/20121127-istanbul
+INFO 2012-12-05 12:49:33,203 utils 36438 4569571328 Got 200 response from http://www.bbc.com/travel/video/my-city/20121127-istanbul
+INFO 2012-12-05 12:49:43,447 utils 36438 4569571328 Finished tagging source from: http://www.bbc.com/travel/video/my-city/20121127-istanbul 
+INFO 2012-12-05 12:51:44,195 utils 36440 4563939328 Getting source from: http://www.bbc.com/travel/video/my-city/20121127-istanbul
+INFO 2012-12-05 12:51:45,032 utils 36440 4563939328 Got 200 response from http://www.bbc.com/travel/video/my-city/20121127-istanbul
+INFO 2012-12-05 12:51:55,613 utils 36440 4563939328 Finished tagging source from: http://www.bbc.com/travel/video/my-city/20121127-istanbul 
+INFO 2012-12-05 12:53:27,703 utils 36441 4504186880 Getting source from: http://www.bbc.com/travel/video/my-city/20121127-istanbul
+INFO 2012-12-05 12:53:28,202 utils 36441 4504186880 Got 200 response from http://www.bbc.com/travel/video/my-city/20121127-istanbul
+INFO 2012-12-05 12:53:38,776 utils 36441 4504186880 Finished tagging source from: http://www.bbc.com/travel/video/my-city/20121127-istanbul 
+INFO 2012-12-05 12:54:28,733 utils 36442 4504293376 Getting source from: http://www.bbc.com/travel/video/my-city/20121127-istanbul
+INFO 2012-12-05 12:54:29,305 utils 36442 4504293376 Got 200 response from http://www.bbc.com/travel/video/my-city/20121127-istanbul
+INFO 2012-12-05 12:54:40,120 utils 36442 4504293376 Finished tagging source from: http://www.bbc.com/travel/video/my-city/20121127-istanbul 
+INFO 2012-12-05 12:55:37,994 utils 36443 4395307008 Getting source from: http://www.bbc.com/travel/video/my-city/20121127-istanbul
+INFO 2012-12-05 12:55:38,800 utils 36443 4395307008 Got 200 response from http://www.bbc.com/travel/video/my-city/20121127-istanbul
+INFO 2012-12-05 12:55:49,407 utils 36443 4395307008 Finished tagging source from: http://www.bbc.com/travel/video/my-city/20121127-istanbul 
+INFO 2012-12-05 12:56:29,944 utils 36445 4499447808 Getting source from: http://www.bbc.com/travel/video/my-city/20121127-istanbul
+INFO 2012-12-05 12:56:30,490 utils 36445 4499447808 Got 200 response from http://www.bbc.com/travel/video/my-city/20121127-istanbul
+INFO 2012-12-05 12:56:41,364 utils 36445 4499447808 Finished tagging source from: http://www.bbc.com/travel/video/my-city/20121127-istanbul 
+INFO 2012-12-05 12:57:51,834 utils 36446 4343275520 Getting source from: http://www.bbc.com/travel/video/my-city/20121127-istanbul
+INFO 2012-12-05 12:57:52,371 utils 36446 4343275520 Got 200 response from http://www.bbc.com/travel/video/my-city/20121127-istanbul
+INFO 2012-12-05 12:57:57,340 utils 36446 4343275520 Finished tagging source from: http://www.bbc.com/travel/video/my-city/20121127-istanbul 
+INFO 2012-12-05 13:04:06,356 utils 36449 4326219776 Getting source from: http://www.bbc.com/travel/video/my-city/20121127-istanbul
+INFO 2012-12-05 13:04:07,490 utils 36449 4326219776 Got 200 response from http://www.bbc.com/travel/video/my-city/20121127-istanbul
+INFO 2012-12-05 13:04:19,117 utils 36449 4326219776 Finished tagging source from: http://www.bbc.com/travel/video/my-city/20121127-istanbul 
+INFO 2012-12-05 13:05:46,421 utils 36450 4399362048 Getting source from: http://www.bbc.com/travel/video/my-city/20121127-istanbul
+INFO 2012-12-05 13:05:47,384 utils 36450 4399362048 Got 200 response from http://www.bbc.com/travel/video/my-city/20121127-istanbul
+INFO 2012-12-05 13:05:58,349 utils 36450 4399362048 Finished tagging source from: http://www.bbc.com/travel/video/my-city/20121127-istanbul 
+INFO 2012-12-05 13:06:25,950 utils 36452 4419592192 Getting source from: http://www.bbc.com/travel/video/my-city/20121127-istanbul
+INFO 2012-12-05 13:06:26,483 utils 36452 4419592192 Got 200 response from http://www.bbc.com/travel/video/my-city/20121127-istanbul
+INFO 2012-12-05 13:06:36,927 utils 36452 4419592192 Finished tagging source from: http://www.bbc.com/travel/video/my-city/20121127-istanbul 
+INFO 2012-12-05 13:08:10,404 utils 36453 4437471232 Getting source from: http://www.bbc.com/travel/video/my-city/20121127-istanbul
+INFO 2012-12-05 13:08:11,395 utils 36453 4437471232 Got 200 response from http://www.bbc.com/travel/video/my-city/20121127-istanbul
+INFO 2012-12-05 13:08:21,807 utils 36453 4437471232 Finished tagging source from: http://www.bbc.com/travel/video/my-city/20121127-istanbul 
+INFO 2012-12-05 13:08:54,811 utils 36460 4473376768 Getting source from: http://www.bbc.com/travel/video/my-city/20121127-istanbul
+INFO 2012-12-05 13:08:55,609 utils 36460 4473376768 Got 200 response from http://www.bbc.com/travel/video/my-city/20121127-istanbul
+INFO 2012-12-05 13:09:00,389 utils 36460 4473376768 Finished tagging source from: http://www.bbc.com/travel/video/my-city/20121127-istanbul 
+INFO 2012-12-05 13:14:49,954 utils 36463 4535062528 Getting source from: http://www.bbc.com/travel/video/my-city/20121127-istanbul
+INFO 2012-12-05 13:14:50,871 utils 36463 4535062528 Got 200 response from http://www.bbc.com/travel/video/my-city/20121127-istanbul
+INFO 2012-12-05 13:14:55,770 utils 36463 4535062528 Finished tagging source from: http://www.bbc.com/travel/video/my-city/20121127-istanbul 
+INFO 2012-12-05 13:21:25,165 utils 36463 4535062528 Getting source from: http://www.bbc.com/a-z/
+INFO 2012-12-05 13:21:26,229 utils 36463 4535062528 Got 200 response from http://www.bbc.com/a-z/
+INFO 2012-12-05 13:21:27,483 utils 36463 4535062528 Finished tagging source from: http://www.bbc.com/a-z/ 
+INFO 2012-12-05 13:21:27,958 utils 36463 4535062528 Getting source from: http://www.bbc.com/a-z/style/lotmore.css
+INFO 2012-12-05 13:21:28,161 utils 36463 4535062528 Got 200 response from http://www.bbc.com/a-z/style/lotmore.css
+INFO 2012-12-05 13:21:34,283 utils 36463 4535062528 Finished tagging source from: http://www.bbc.com/a-z/style/lotmore.css 
+INFO 2012-12-05 16:06:20,252 utils 36463 4535062528 Getting source from: http://www.bbc.com/news/
+INFO 2012-12-05 16:06:21,507 utils 36463 4535062528 Got 200 response from http://www.bbc.com/news/
+INFO 2012-12-05 16:06:24,015 utils 36463 4535062528 Finished tagging source from: http://www.bbc.com/news/ 
+INFO 2012-12-05 16:17:23,097 utils 36605 4444307456 Getting source from: http://www.bbc.com/news/uk-politics-20600442
+INFO 2012-12-05 16:17:24,215 utils 36605 4444307456 Got 200 response from http://www.bbc.com/news/uk-politics-20600442
+INFO 2012-12-05 16:17:32,157 utils 36605 4444307456 Finished tagging source from: http://www.bbc.com/news/uk-politics-20600442 
+INFO 2012-12-05 16:17:34,509 utils 36605 4444307456 Getting source from: http://www.bbc.com/news/(none)/desktop/modules/twitter_renderer.js
+ERROR 2012-12-05 16:17:34,713 utils 36605 4444307456 Could not get source from: http://www.bbc.com/news/(none)/desktop/modules/twitter_renderer.js
+ERROR 2012-12-05 16:17:34,746 utils 36605 4444307456 Error stack 
+ Traceback (most recent call last):
+  File "/Users/slinkola/Koulu/lhhc/Slipper/../Slipper/slip/utils.py", line 31, in get_source
+    response = urllib2.urlopen(url)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 126, in urlopen
+    return _opener.open(url, data, timeout)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 400, in open
+    response = meth(req, response)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 513, in http_response
+    'http', request, response, code, msg, hdrs)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 432, in error
+    result = self._call_chain(*args)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 372, in _call_chain
+    result = func(*args)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 619, in http_error_302
+    return self.parent.open(new, timeout=req.timeout)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 400, in open
+    response = meth(req, response)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 513, in http_response
+    'http', request, response, code, msg, hdrs)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 438, in error
+    return self._call_chain(*args)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 372, in _call_chain
+    result = func(*args)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 521, in http_error_default
+    raise HTTPError(req.get_full_url(), code, msg, hdrs, fp)
+HTTPError: HTTP Error 404: Not Found
+
+INFO 2012-12-05 16:29:59,534 utils 36606 4343271424 Getting source from: http://www.bbc.com/news/uk-politics-20600442
+INFO 2012-12-05 16:30:00,887 utils 36606 4343271424 Got 200 response from http://www.bbc.com/news/uk-politics-20600442
+INFO 2012-12-05 16:30:11,148 utils 36606 4343271424 utils.slip has blown, with message: 
+ Traceback (most recent call last):
+  File "/Users/slinkola/Koulu/lhhc/Slipper/../Slipper/slip/utils.py", line 259, in slip
+    freudify_soup(soup)
+  File "/Users/slinkola/Koulu/lhhc/Slipper/../Slipper/slip/utils.py", line 236, in freudify_soup
+    replaced_string += " " + prettify_sentence(replaced)
+TypeError: cannot concatenate 'str' and 'NoneType' objects
+
+INFO 2012-12-05 16:30:46,780 utils 36612 4491726848 Getting source from: http://www.bbc.com/news/
+INFO 2012-12-05 16:30:47,796 utils 36612 4491726848 Got 200 response from http://www.bbc.com/news/
+INFO 2012-12-05 16:30:54,080 utils 36612 4491726848 Finished tagging source from: http://www.bbc.com/news/ 
+INFO 2012-12-05 16:30:54,222 utils 36612 4491726848 Getting source from: http://www.bbc.com/news/uk-politics-20600442
+INFO 2012-12-05 16:30:54,855 utils 36612 4491726848 Got 200 response from http://www.bbc.com/news/uk-politics-20600442
+INFO 2012-12-05 16:30:58,458 utils 36612 4491726848 Finished tagging source from: http://www.bbc.com/news/uk-politics-20600442 
+INFO 2012-12-05 16:30:59,638 utils 36612 4491726848 Getting source from: http://www.bbc.com/news/(none)/desktop/modules/twitter_renderer.js
+ERROR 2012-12-05 16:30:59,837 utils 36612 4491726848 Could not get source from: http://www.bbc.com/news/(none)/desktop/modules/twitter_renderer.js
+ERROR 2012-12-05 16:30:59,874 utils 36612 4491726848 Error stack 
+ Traceback (most recent call last):
+  File "/Users/slinkola/Koulu/lhhc/Slipper/../Slipper/slip/utils.py", line 31, in get_source
+    response = urllib2.urlopen(url)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 126, in urlopen
+    return _opener.open(url, data, timeout)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 400, in open
+    response = meth(req, response)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 513, in http_response
+    'http', request, response, code, msg, hdrs)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 432, in error
+    result = self._call_chain(*args)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 372, in _call_chain
+    result = func(*args)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 619, in http_error_302
+    return self.parent.open(new, timeout=req.timeout)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 400, in open
+    response = meth(req, response)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 513, in http_response
+    'http', request, response, code, msg, hdrs)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 438, in error
+    return self._call_chain(*args)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 372, in _call_chain
+    result = func(*args)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 521, in http_error_default
+    raise HTTPError(req.get_full_url(), code, msg, hdrs, fp)
+HTTPError: HTTP Error 404: Not Found
+
+INFO 2012-12-05 16:32:29,909 utils 36614 4506644480 Getting source from: http://www.bbc.com/news/uk-politics-20600442
+INFO 2012-12-05 16:32:30,989 utils 36614 4506644480 Got 200 response from http://www.bbc.com/news/uk-politics-20600442
+INFO 2012-12-05 16:32:38,029 utils 36614 4506644480 Finished tagging source from: http://www.bbc.com/news/uk-politics-20600442 
+INFO 2012-12-05 16:32:39,666 utils 36614 4506644480 Getting source from: http://www.bbc.com/news/(none)/desktop/modules/twitter_renderer.js
+ERROR 2012-12-05 16:32:40,640 utils 36614 4506644480 Could not get source from: http://www.bbc.com/news/(none)/desktop/modules/twitter_renderer.js
+ERROR 2012-12-05 16:32:40,661 utils 36614 4506644480 Error stack 
+ Traceback (most recent call last):
+  File "/Users/slinkola/Koulu/lhhc/Slipper/../Slipper/slip/utils.py", line 31, in get_source
+    response = urllib2.urlopen(url)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 126, in urlopen
+    return _opener.open(url, data, timeout)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 400, in open
+    response = meth(req, response)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 513, in http_response
+    'http', request, response, code, msg, hdrs)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 432, in error
+    result = self._call_chain(*args)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 372, in _call_chain
+    result = func(*args)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 619, in http_error_302
+    return self.parent.open(new, timeout=req.timeout)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 400, in open
+    response = meth(req, response)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 513, in http_response
+    'http', request, response, code, msg, hdrs)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 438, in error
+    return self._call_chain(*args)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 372, in _call_chain
+    result = func(*args)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 521, in http_error_default
+    raise HTTPError(req.get_full_url(), code, msg, hdrs, fp)
+HTTPError: HTTP Error 404: Not Found
+
+INFO 2012-12-05 16:33:16,562 utils 36615 4376653824 Getting source from: http://www.bbc.com/news/uk-politics-20600442
+INFO 2012-12-05 16:33:16,956 utils 36615 4376653824 Got 200 response from http://www.bbc.com/news/uk-politics-20600442
+INFO 2012-12-05 16:33:23,831 utils 36615 4376653824 Finished tagging source from: http://www.bbc.com/news/uk-politics-20600442 
+INFO 2012-12-05 16:33:25,128 utils 36615 4376653824 Getting source from: http://www.bbc.com/news/(none)/desktop/modules/twitter_renderer.js
+ERROR 2012-12-05 16:33:25,330 utils 36615 4376653824 Could not get source from: http://www.bbc.com/news/(none)/desktop/modules/twitter_renderer.js
+ERROR 2012-12-05 16:33:25,343 utils 36615 4376653824 Error stack 
+ Traceback (most recent call last):
+  File "/Users/slinkola/Koulu/lhhc/Slipper/../Slipper/slip/utils.py", line 31, in get_source
+    response = urllib2.urlopen(url)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 126, in urlopen
+    return _opener.open(url, data, timeout)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 400, in open
+    response = meth(req, response)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 513, in http_response
+    'http', request, response, code, msg, hdrs)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 432, in error
+    result = self._call_chain(*args)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 372, in _call_chain
+    result = func(*args)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 619, in http_error_302
+    return self.parent.open(new, timeout=req.timeout)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 400, in open
+    response = meth(req, response)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 513, in http_response
+    'http', request, response, code, msg, hdrs)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 438, in error
+    return self._call_chain(*args)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 372, in _call_chain
+    result = func(*args)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 521, in http_error_default
+    raise HTTPError(req.get_full_url(), code, msg, hdrs, fp)
+HTTPError: HTTP Error 404: Not Found
+
+INFO 2012-12-05 16:37:54,695 utils 36616 4562055168 Getting source from: http://www.bbc.com/news/uk-politics-20600442
+INFO 2012-12-05 16:37:55,729 utils 36616 4562055168 Got 200 response from http://www.bbc.com/news/uk-politics-20600442
+INFO 2012-12-05 16:38:04,903 utils 36616 4562055168 Finished tagging source from: http://www.bbc.com/news/uk-politics-20600442 
+INFO 2012-12-05 16:38:09,010 utils 36616 4562055168 Getting source from: http://www.bbc.com/news/(none)/desktop/modules/twitter_renderer.js
+ERROR 2012-12-05 16:38:11,263 utils 36616 4562055168 Could not get source from: http://www.bbc.com/news/(none)/desktop/modules/twitter_renderer.js
+ERROR 2012-12-05 16:38:11,347 utils 36616 4562055168 Error stack 
+ Traceback (most recent call last):
+  File "/Users/slinkola/Koulu/lhhc/Slipper/../Slipper/slip/utils.py", line 31, in get_source
+    response = urllib2.urlopen(url)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 126, in urlopen
+    return _opener.open(url, data, timeout)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 400, in open
+    response = meth(req, response)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 513, in http_response
+    'http', request, response, code, msg, hdrs)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 432, in error
+    result = self._call_chain(*args)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 372, in _call_chain
+    result = func(*args)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 619, in http_error_302
+    return self.parent.open(new, timeout=req.timeout)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 400, in open
+    response = meth(req, response)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 513, in http_response
+    'http', request, response, code, msg, hdrs)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 438, in error
+    return self._call_chain(*args)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 372, in _call_chain
+    result = func(*args)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 521, in http_error_default
+    raise HTTPError(req.get_full_url(), code, msg, hdrs, fp)
+HTTPError: HTTP Error 404: Not Found
+
+INFO 2012-12-05 16:45:09,915 utils 36631 4387053568 Getting source from: http://www.bbc.com/news/uk-politics-20600442
+INFO 2012-12-05 16:45:10,742 utils 36631 4387053568 Got 200 response from http://www.bbc.com/news/uk-politics-20600442
+INFO 2012-12-05 16:45:19,749 utils 36631 4387053568 Finished tagging source from: http://www.bbc.com/news/uk-politics-20600442 
+INFO 2012-12-05 16:45:22,314 utils 36631 4387053568 Getting source from: http://www.bbc.com/news/(none)/desktop/modules/twitter_renderer.js
+ERROR 2012-12-05 16:45:22,515 utils 36631 4387053568 Could not get source from: http://www.bbc.com/news/(none)/desktop/modules/twitter_renderer.js
+ERROR 2012-12-05 16:45:22,549 utils 36631 4387053568 Error stack 
+ Traceback (most recent call last):
+  File "/Users/slinkola/Koulu/lhhc/Slipper/../Slipper/slip/utils.py", line 31, in get_source
+    response = urllib2.urlopen(url)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 126, in urlopen
+    return _opener.open(url, data, timeout)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 400, in open
+    response = meth(req, response)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 513, in http_response
+    'http', request, response, code, msg, hdrs)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 432, in error
+    result = self._call_chain(*args)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 372, in _call_chain
+    result = func(*args)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 619, in http_error_302
+    return self.parent.open(new, timeout=req.timeout)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 400, in open
+    response = meth(req, response)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 513, in http_response
+    'http', request, response, code, msg, hdrs)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 438, in error
+    return self._call_chain(*args)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 372, in _call_chain
+    result = func(*args)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 521, in http_error_default
+    raise HTTPError(req.get_full_url(), code, msg, hdrs, fp)
+HTTPError: HTTP Error 404: Not Found
+
+INFO 2012-12-05 16:46:35,257 utils 36641 4483641344 Getting source from: http://www.bbc.com/news/uk-politics-20600442
+INFO 2012-12-05 16:46:36,384 utils 36641 4483641344 Got 200 response from http://www.bbc.com/news/uk-politics-20600442
+INFO 2012-12-05 16:46:44,189 utils 36641 4483641344 Finished tagging source from: http://www.bbc.com/news/uk-politics-20600442 
+INFO 2012-12-05 16:47:20,276 utils 36642 4495249408 Getting source from: http://www.bbc.com/news/uk-politics-20600442
+INFO 2012-12-05 16:47:21,578 utils 36642 4495249408 Got 200 response from http://www.bbc.com/news/uk-politics-20600442
+INFO 2012-12-05 16:47:28,937 utils 36642 4495249408 Finished tagging source from: http://www.bbc.com/news/uk-politics-20600442 
+INFO 2012-12-05 16:47:30,202 utils 36642 4495249408 Getting source from: http://www.bbc.com/news/(none)/desktop/modules/twitter_renderer.js
+ERROR 2012-12-05 16:47:30,410 utils 36642 4495249408 Could not get source from: http://www.bbc.com/news/(none)/desktop/modules/twitter_renderer.js
+ERROR 2012-12-05 16:47:30,435 utils 36642 4495249408 Error stack 
+ Traceback (most recent call last):
+  File "/Users/slinkola/Koulu/lhhc/Slipper/../Slipper/slip/utils.py", line 31, in get_source
+    response = urllib2.urlopen(url)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 126, in urlopen
+    return _opener.open(url, data, timeout)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 400, in open
+    response = meth(req, response)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 513, in http_response
+    'http', request, response, code, msg, hdrs)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 432, in error
+    result = self._call_chain(*args)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 372, in _call_chain
+    result = func(*args)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 619, in http_error_302
+    return self.parent.open(new, timeout=req.timeout)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 400, in open
+    response = meth(req, response)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 513, in http_response
+    'http', request, response, code, msg, hdrs)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 438, in error
+    return self._call_chain(*args)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 372, in _call_chain
+    result = func(*args)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 521, in http_error_default
+    raise HTTPError(req.get_full_url(), code, msg, hdrs, fp)
+HTTPError: HTTP Error 404: Not Found
+
+INFO 2012-12-05 16:49:03,472 utils 36643 4398952448 Getting source from: http://www.bbc.com/news/uk-politics-20600442
+INFO 2012-12-05 16:49:04,575 utils 36643 4398952448 Got 200 response from http://www.bbc.com/news/uk-politics-20600442
+INFO 2012-12-05 16:49:11,949 utils 36643 4398952448 Finished tagging source from: http://www.bbc.com/news/uk-politics-20600442 
+INFO 2012-12-05 16:49:13,258 utils 36643 4398952448 Getting source from: http://www.bbc.com/news/(none)/desktop/modules/twitter_renderer.js
+ERROR 2012-12-05 16:49:13,456 utils 36643 4398952448 Could not get source from: http://www.bbc.com/news/(none)/desktop/modules/twitter_renderer.js
+ERROR 2012-12-05 16:49:13,501 utils 36643 4398952448 Error stack 
+ Traceback (most recent call last):
+  File "/Users/slinkola/Koulu/lhhc/Slipper/../Slipper/slip/utils.py", line 31, in get_source
+    response = urllib2.urlopen(url)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 126, in urlopen
+    return _opener.open(url, data, timeout)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 400, in open
+    response = meth(req, response)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 513, in http_response
+    'http', request, response, code, msg, hdrs)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 432, in error
+    result = self._call_chain(*args)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 372, in _call_chain
+    result = func(*args)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 619, in http_error_302
+    return self.parent.open(new, timeout=req.timeout)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 400, in open
+    response = meth(req, response)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 513, in http_response
+    'http', request, response, code, msg, hdrs)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 438, in error
+    return self._call_chain(*args)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 372, in _call_chain
+    result = func(*args)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 521, in http_error_default
+    raise HTTPError(req.get_full_url(), code, msg, hdrs, fp)
+HTTPError: HTTP Error 404: Not Found
+
+INFO 2012-12-05 16:50:37,517 utils 36649 4485095424 Getting source from: http://www.bbc.com/news/uk-politics-20600442
+INFO 2012-12-05 16:50:38,746 utils 36649 4485095424 Got 200 response from http://www.bbc.com/news/uk-politics-20600442
+INFO 2012-12-05 16:50:46,571 utils 36649 4485095424 Finished tagging source from: http://www.bbc.com/news/uk-politics-20600442 
+INFO 2012-12-05 16:50:48,305 utils 36649 4485095424 Getting source from: http://www.bbc.com/news/(none)/desktop/modules/twitter_renderer.js
+ERROR 2012-12-05 16:50:48,508 utils 36649 4485095424 Could not get source from: http://www.bbc.com/news/(none)/desktop/modules/twitter_renderer.js
+ERROR 2012-12-05 16:50:48,626 utils 36649 4485095424 Error stack 
+ Traceback (most recent call last):
+  File "/Users/slinkola/Koulu/lhhc/Slipper/../Slipper/slip/utils.py", line 31, in get_source
+    response = urllib2.urlopen(url)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 126, in urlopen
+    return _opener.open(url, data, timeout)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 400, in open
+    response = meth(req, response)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 513, in http_response
+    'http', request, response, code, msg, hdrs)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 432, in error
+    result = self._call_chain(*args)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 372, in _call_chain
+    result = func(*args)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 619, in http_error_302
+    return self.parent.open(new, timeout=req.timeout)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 400, in open
+    response = meth(req, response)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 513, in http_response
+    'http', request, response, code, msg, hdrs)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 438, in error
+    return self._call_chain(*args)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 372, in _call_chain
+    result = func(*args)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 521, in http_error_default
+    raise HTTPError(req.get_full_url(), code, msg, hdrs, fp)
+HTTPError: HTTP Error 404: Not Found
+
+INFO 2012-12-05 16:52:17,032 utils 36651 4348448768 Getting source from: http://www.bbc.com/news/uk-politics-20600442
+INFO 2012-12-05 16:52:18,216 utils 36651 4348448768 Got 200 response from http://www.bbc.com/news/uk-politics-20600442
+INFO 2012-12-05 16:52:26,440 utils 36651 4348448768 Finished tagging source from: http://www.bbc.com/news/uk-politics-20600442 
+INFO 2012-12-05 16:52:27,985 utils 36651 4348448768 Getting source from: http://www.bbc.com/news/(none)/desktop/modules/twitter_renderer.js
+ERROR 2012-12-05 16:52:28,184 utils 36651 4348448768 Could not get source from: http://www.bbc.com/news/(none)/desktop/modules/twitter_renderer.js
+ERROR 2012-12-05 16:52:28,204 utils 36651 4348448768 Error stack 
+ Traceback (most recent call last):
+  File "/Users/slinkola/Koulu/lhhc/Slipper/../Slipper/slip/utils.py", line 31, in get_source
+    response = urllib2.urlopen(url)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 126, in urlopen
+    return _opener.open(url, data, timeout)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 400, in open
+    response = meth(req, response)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 513, in http_response
+    'http', request, response, code, msg, hdrs)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 432, in error
+    result = self._call_chain(*args)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 372, in _call_chain
+    result = func(*args)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 619, in http_error_302
+    return self.parent.open(new, timeout=req.timeout)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 400, in open
+    response = meth(req, response)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 513, in http_response
+    'http', request, response, code, msg, hdrs)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 438, in error
+    return self._call_chain(*args)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 372, in _call_chain
+    result = func(*args)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 521, in http_error_default
+    raise HTTPError(req.get_full_url(), code, msg, hdrs, fp)
+HTTPError: HTTP Error 404: Not Found
+
+INFO 2012-12-05 16:52:51,808 utils 36652 4371628032 Getting source from: http://www.bbc.com/news/uk-politics-20600442
+INFO 2012-12-05 16:52:52,380 utils 36652 4371628032 Got 200 response from http://www.bbc.com/news/uk-politics-20600442
+INFO 2012-12-05 16:53:00,319 utils 36652 4371628032 Finished tagging source from: http://www.bbc.com/news/uk-politics-20600442 
+INFO 2012-12-05 16:53:01,811 utils 36652 4371628032 Getting source from: http://www.bbc.com/news/(none)/desktop/modules/twitter_renderer.js
+ERROR 2012-12-05 16:53:02,778 utils 36652 4371628032 Could not get source from: http://www.bbc.com/news/(none)/desktop/modules/twitter_renderer.js
+ERROR 2012-12-05 16:53:02,803 utils 36652 4371628032 Error stack 
+ Traceback (most recent call last):
+  File "/Users/slinkola/Koulu/lhhc/Slipper/../Slipper/slip/utils.py", line 31, in get_source
+    response = urllib2.urlopen(url)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 126, in urlopen
+    return _opener.open(url, data, timeout)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 400, in open
+    response = meth(req, response)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 513, in http_response
+    'http', request, response, code, msg, hdrs)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 432, in error
+    result = self._call_chain(*args)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 372, in _call_chain
+    result = func(*args)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 619, in http_error_302
+    return self.parent.open(new, timeout=req.timeout)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 400, in open
+    response = meth(req, response)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 513, in http_response
+    'http', request, response, code, msg, hdrs)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 438, in error
+    return self._call_chain(*args)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 372, in _call_chain
+    result = func(*args)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 521, in http_error_default
+    raise HTTPError(req.get_full_url(), code, msg, hdrs, fp)
+HTTPError: HTTP Error 404: Not Found
+
+INFO 2012-12-05 16:54:27,063 utils 36653 4328787968 Getting source from: http://www.bbc.com/news/uk-politics-20600442
+INFO 2012-12-05 16:54:28,212 utils 36653 4328787968 Got 200 response from http://www.bbc.com/news/uk-politics-20600442
+INFO 2012-12-05 16:54:36,475 utils 36653 4328787968 Finished tagging source from: http://www.bbc.com/news/uk-politics-20600442 
+INFO 2012-12-05 16:54:37,831 utils 36653 4328787968 Getting source from: http://www.bbc.com/news/(none)/desktop/modules/twitter_renderer.js
+ERROR 2012-12-05 16:54:38,422 utils 36653 4328787968 Could not get source from: http://www.bbc.com/news/(none)/desktop/modules/twitter_renderer.js
+ERROR 2012-12-05 16:54:38,468 utils 36653 4328787968 Error stack 
+ Traceback (most recent call last):
+  File "/Users/slinkola/Koulu/lhhc/Slipper/../Slipper/slip/utils.py", line 31, in get_source
+    response = urllib2.urlopen(url)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 126, in urlopen
+    return _opener.open(url, data, timeout)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 400, in open
+    response = meth(req, response)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 513, in http_response
+    'http', request, response, code, msg, hdrs)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 432, in error
+    result = self._call_chain(*args)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 372, in _call_chain
+    result = func(*args)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 619, in http_error_302
+    return self.parent.open(new, timeout=req.timeout)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 400, in open
+    response = meth(req, response)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 513, in http_response
+    'http', request, response, code, msg, hdrs)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 438, in error
+    return self._call_chain(*args)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 372, in _call_chain
+    result = func(*args)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 521, in http_error_default
+    raise HTTPError(req.get_full_url(), code, msg, hdrs, fp)
+HTTPError: HTTP Error 404: Not Found
+

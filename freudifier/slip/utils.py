@@ -233,7 +233,6 @@ def freudify_soup(soup):
 		if visible_html_tag(t) and hasattr(t, 'string'):
 			if t.string == None: continue
 			if isinstance(t, CData): 
-				print "buu"
 				continue
 			#if t.string.startswith("[CDATA["): continue
 			sentences = nltk.sent_tokenize(t.string)
@@ -275,4 +274,4 @@ def slip(source, url):
 	logger.info("Finished tagging source from: %s " % url)
 	return soup.prettify()
 
-SEXWORDS = read_wordnet_sexuality(os.path.join(settings.SITE_ROOT, "slip", "sexuality.txt"))
+SEXWORDS = read_wordnet_sexuality(os.path.join(os.path.dirname(__file__), "sexuality.txt"))

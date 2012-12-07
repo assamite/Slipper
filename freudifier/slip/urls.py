@@ -1,13 +1,15 @@
 from django.conf.urls.defaults import patterns, include, url
-import settings
+from views import home, freudify
 
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
 # admin.autodiscover()
 
 urlpatterns = patterns('',
-    url(r'^', include('slip.urls')),
-    url(r'^media/(?P<path>.*)$', 'django.views.static.serve',{'document_root': settings.MEDIA_ROOT}, name='stemweb_media_root_url')
+    # Examples:
+    url(r'^$', home, name = 'slip_base_url'),
+    url(r'^home', home, name = 'slip_home_url'),
+    url(r'^freudify/(?P<url>.*)$', freudify, name = "slip_freudify_url")
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),

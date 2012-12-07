@@ -9,6 +9,7 @@
 	</head>
 
 	<body>
+		{% block main_content %}
 		<div id="url_box">  
 		 	<form class="centered" id="url_form" action={% url slip_freudify_url url="" %} enctype="multipart/form-data" method="post">
 				{% csrf_token %}
@@ -18,6 +19,7 @@
 				</div>
 			</form>
 		</div>
+		{% endblock %}
 		
 		<div id="footer_padding"></div>
 		</div>

@@ -7,7 +7,7 @@ from views import home, freudify
 
 urlpatterns = patterns('',
     # Examples:
-    url(r'^$', home, name = 'slip_base_url'),
+    url(r'^http://freudifier.herokuapp.com/$', home, name = 'slip_base_url'),
     url(r'^home', home, name = 'slip_home_url'),
     url(r'^freudify/(?P<url>.*)$', freudify, name = "slip_freudify_url")
 

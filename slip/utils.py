@@ -8,7 +8,7 @@ from bs4 import BeautifulSoup as bs
 from bs4 import CData
 import nltk
 import Levenshtein as lv
-from Freudifier import settings
+from freudifier import settings
 
 import logging
 import traceback

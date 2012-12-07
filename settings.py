@@ -109,7 +109,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
 )
 
-ROOT_URLCONF = 'Freudifier.urls'
+ROOT_URLCONF = 'freudifier.urls'
 
 TEMPLATE_DIRS = (
 	os.path.join(SITE_ROOT, 'templates/')

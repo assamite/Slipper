@@ -6,9 +6,7 @@ import settings
 # admin.autodiscover()
 
 urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'freudifier.views.home', name='home'),
-    url(r'^', include('freudifier.slip.urls')),
+    url(r'^', include('slip.urls')),
     url(r'^media/(?P<path>.*)$', 'django.views.static.serve',{'document_root': settings.MEDIA_ROOT}, name='stemweb_media_root_url')
 
     # Uncomment the admin/doc line below to enable admin documentation:

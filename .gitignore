@@ -1,7 +1,6 @@
 .project
 .pydevproject
 *.pyc
-slip/*.pyc
-logs/slip*
+freudifier/logs/slip*
 venv
 .DS_Store

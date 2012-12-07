@@ -261,7 +261,7 @@ def slip(source, url):
 		
 		Returns changed source code.
 	'''
-	soup = bs(source)
+	soup = bs(source, 'lxml')
 	logger = logging.getLogger('Slipper.slip')
 	
 	try:

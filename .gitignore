@@ -2,6 +2,6 @@
 .pydevproject
 *.pyc
 slip/*.pyc
-logs/*
+logs/slip*
 venv
 .DS_Store

@@ -3,3 +3,4 @@ slip/*.pyc
 logs/*
 local_conf.py
 venv
+.DS_Store

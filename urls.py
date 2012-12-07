@@ -7,8 +7,8 @@ import settings
 
 urlpatterns = patterns('',
     # Examples:
-    # url(r'^$', 'slipper.views.home', name='home'),
-    url(r'^', include('Slipper.slip.urls')),
+    # url(r'^$', 'freudifier.views.home', name='home'),
+    url(r'^', include('Freudifier.slip.urls')),
     url(r'^media/(?P<path>.*)$', 'django.views.static.serve',{'document_root': settings.MEDIA_ROOT}, name='stemweb_media_root_url')
 
     # Uncomment the admin/doc line below to enable admin documentation:

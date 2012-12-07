@@ -10,7 +10,7 @@ TEMPLATE_DEBUG = DEBUG
 # Root folder of the site
 SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
 
-ADMINS = local_conf.ADMINS
+ADMINS = local_conf.ADMINS or (("Simo Linkola", "slinkola@cs.helsinki.fi"))
 
 MANAGERS = ADMINS
 
@@ -59,7 +59,7 @@ MEDIA_ROOT = os.path.join(SITE_ROOT, 'media/')
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
 # Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
-MEDIA_URL = local_conf.MEDIA_URL
+MEDIA_URL = local_conf.MEDIA_URL or "media/"
 
 # Absolute path to the directory static files should be collected to.
 # Don't put anything in this directory yourself; store your static files
@@ -109,7 +109,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
 )
 
-ROOT_URLCONF = 'Slipper.urls'
+ROOT_URLCONF = 'Freudifier.urls'
 
 TEMPLATE_DIRS = (
 	os.path.join(SITE_ROOT, 'templates/')

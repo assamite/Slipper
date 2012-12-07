@@ -8,6 +8,7 @@ from views import home, freudify
 urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'freudifier.views.home', name='home'),
+    url(r'^', home, name = 'slip_home_url'),
     url(r'^home', home, name = 'slip_home_url'),
     url(r'^freudify/(?P<url>.*)$', freudify, name = "slip_freudify_url")
 

@@ -5,6 +5,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>Freudian slipper</title>
 		<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/slip.css" />
+		<link rel="stylesheet" media="screen" href="http://openfontlibrary.org/face/mill" rel="stylesheet" type="text/css"/>
 	</head>
 
 	<body>
@@ -13,7 +14,7 @@
 				{% csrf_token %}
 				{{ form.as_p }}
 				<div id="freudify_button">
-					<input id="submit_button" type="submit" value="FREUDIFY" />
+					<input id="submit_button" type="submit" value="freudify" />
 				</div>
 			</form>
 		</div>

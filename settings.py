@@ -4,7 +4,7 @@ import local_conf
 
 # Django settings for slipper project.
 
-DEBUG = local_conf.DEBUG
+DEBUG = local_conf.DEBUG or False
 TEMPLATE_DEBUG = DEBUG
 
 # Root folder of the site
@@ -14,6 +14,7 @@ ADMINS = local_conf.ADMINS
 
 MANAGERS = ADMINS
 
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
@@ -24,6 +25,7 @@ DATABASES = {
         'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
     }
 }
+'''
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -90,7 +92,7 @@ STATICFILES_FINDERS = (
 )
 
 # me me, pick me, I am unique!
-SECRET_KEY = local_conf.UGH_DAT_VERRY_SECRAT_KEYZ 
+SECRET_KEY = local_conf.UGH_DAT_VERRY_SECRAT_KEYZ or 'eifnaeifnafinawd22teas'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -175,3 +177,7 @@ LOGGING = {
 		}
 	}
 }
+
+# Parse database configuration from $DATABASE_URL
+import dj_database_url
+DATABASES = {'default': dj_database_url.config(default='postgres://localhost')}

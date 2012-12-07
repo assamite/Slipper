@@ -16,7 +16,7 @@ html
 	overflow:hidden;
 	min-width: 900px;
 	min-height: 300px;
-	background-color:rgba(109, 123, 141, 0.4);
+	background-color: #4F678A;
 }
 
 body
@@ -44,17 +44,27 @@ body
 	padding-top: 20px;
 	margin-left: auto;
 	margin-right: auto;
-	width: 100px;	
+	width: 200px;
 }
 
 #submit_button 
 {
-	font-size: larger;
-	color: rgba(120, 106, 98, 1);
-	background-color: rgba(109, 123, 141, 0.005);
+
+	color: #D9E0E0;
+	background-color: #4F678A;
+	border: 0px;
+	cursor: pointer;
+	font-family: 'Mill';
+   	font-weight: normal;
+   	font-style: normal;
+   	text-align:center;
+   	font-size: 36px;
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
 	border-radius: 10px;
+	margin-left: auto;
+	margin-right: auto;
+	width: inherit;
 }
 
 #url_form p
@@ -68,10 +78,16 @@ body
 	margin-right: auto;
 	width: 500px;	
 	font-size: 110%;
-	color: rgba(140, 126, 108, 1);
+	color: #4F678A;
+	border: 0px;
 	-webkit-border-radius: 8px;
 	-moz-border-radius: 8px;
 	border-radius: 8px;
+	font-family: 'Mill';
+   	font-weight: normal;
+   	font-style: normal;
+   	text-align:center;
+   	font-size: 18px;
 
 }
 

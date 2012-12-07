@@ -1,8 +1,6 @@
 import os
 import re
-import sys
 import operator
-import random
 import urllib2
 from urlparse import urljoin
 from django.core.urlresolvers import reverse
@@ -128,21 +126,21 @@ def prettify_sentence(replaced_words):
 	enc_hyphen = False
 	
 	for w in replaced_words:
-		if w in ["``"]:
+		if w in ["``", "\""]:
 			pretty_sentence += " \""
 		elif w == "''":
 			pretty_sentence += "\""
-		elif w in [',', '!', '?', '.', '%', '\"', "n't", "'re", "'s", ";", ":", ")", "]", "}"]:
+		elif w in [',', '!', '?', '.', '%', '\"', "n't", "'re", "'s", ";", ":", ")", "]", "}", "'m", "'ll", "'s", "'d"]:
 			pretty_sentence += w
 		elif w in ['\'']: 
 			if enc_hyphen:
 				pretty_sentence += w
 				enc_hyphen = False	
-		elif last_word in ["``", "(", "[", "{"]:
+		elif last_word in ["``", "(", "[", "{", "\""]:
 			pretty_sentence += w	
 		else:
 			pretty_sentence += " " + w
-		if w.startswith("'") and w not in ["'m", "'ld", "'t", "'re", "'s"]: 
+		if w.startswith("'") and w not in ["'m", "'d", "'re", "'s", "'ll"]: 
 			enc_hyphen = True
 		last_word = w
 	

@@ -36,7 +36,7 @@ body
 {	
 	margin-left: auto;
 	margin-right: auto;
-	width: 500px;
+	width: 50%;
 }
 
 #freudify_button
@@ -76,8 +76,7 @@ body
 {
 	margin-left: auto;
 	margin-right: auto;
-	width: 500px;	
-	font-size: 110%;
+	width: 100%;	
 	color: #4F678A;
 	border: 0px;
 	-webkit-border-radius: 8px;
@@ -88,6 +87,20 @@ body
    	font-style: normal;
    	text-align:center;
    	font-size: 18px;
+   	
+   	background-image: linear-gradient(top, #D9E0E0 0%, #F7FCFC 60%);
+	background-image: -o-linear-gradient(top, #D9E0E0 0%, #F7FCFC 60%);
+	background-image: -moz-linear-gradient(top, #D9E0E0 0%, #F7FCFC 60%);
+	background-image: -webkit-linear-gradient(top, #D9E0E0 0%, #F7FCFC 60%);
+	background-image: -ms-linear-gradient(top, #D9E0E0 0%, #F7FCFC 60%);
+	
+	background-image: -webkit-gradient(
+		linear,
+		right top,
+		right bottom,
+		color-stop(0, #D9E0E0),
+		color-stop(0.6, #F7FCFC)
+	);
 
 }
 
@@ -103,9 +116,12 @@ div#footer
 	border: 0;
 	margin: 0;
 
+	color: #4F678A;
    	text-align: center;
-   	font-style: italic;
-   	font-size: 90%;
+   	font-family: 'Mill';
+   	font-weight: normal;
+   	font-style: normal;
+   	font-size: 110%;
    	opacity: 0.55;
 	
 	background-image: linear-gradient(top, #D9E0E0 0%, #F7FCFC 60%);

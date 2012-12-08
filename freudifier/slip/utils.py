@@ -2,6 +2,7 @@ import os
 import re
 import operator
 import urllib2
+from timeit import default_timer as timer
 from urlparse import urljoin
 from django.core.urlresolvers import reverse
 from bs4 import BeautifulSoup as bs
@@ -10,11 +11,13 @@ import nltk
 import Levenshtein as lv
 from freudifier import settings
 
+DEBUG = settings.DEBUG
+
 import logging
 import traceback
 
-SEXWORDS = ""
-
+SEXWORDS = {} # Sexuality words dictionary read from sexuality.txt
+logger = logging.getLogger('Slipper.slip')
 repl_tags = {'NN':'n','JJ':'a','VB':'v','RB':'r'}
 
 def get_source(url):
@@ -22,8 +25,6 @@ def get_source(url):
 		Gets source code from 'url' and returns it if the page does not return
 		HTML code >= 400. Otherwise returns None.
 	'''
-	
-	logger = logging.getLogger('Slipper.slip')
 	logger.info("Getting source from: %s" % url)
 	try:
 		response = urllib2.urlopen(url)
@@ -39,7 +40,8 @@ def get_source(url):
 
 def read_wordnet_sexuality(filepath):
 	'''
-		Reads 'sexuality.txt' and puts it in s_words dictionary. 
+		Reads 'sexuality.txt' and returns it as a dictionary with part of speech
+		tags as keys and words as values. 
 	'''
 	
 	f = open(filepath)
@@ -64,13 +66,13 @@ def replace_document_words(words, tagged_words, sexws):
 		Iterates over all the words in the document and finds suitable replacing 
 		words for nouns, adjectives and adverbs from 'sexws'
 	
-		words:			list of tokenized raw words.
-		tagged_words:	list of (raw word, tag) pairs
-		sexws: 		dictionary of sexuality oriented words.
+		Parameters
+		words:			iterable of tokenized raw words.
+		tagged_words:	iterable of (raw word, tag) pairs
+		sexws: 			dictionary of sexuality oriented words.
 	
-		Returns final altered document where all the found affect-wordnet's 
-		positive-emotion words are changed to negative-emotion words and vice 
-		versa.
+		Returns altered iterable where some of the words may have been replaced
+		with the words from sexws.
 	'''
 	altered_words = []
 	
@@ -90,15 +92,14 @@ def replace_document_words(words, tagged_words, sexws):
 			rp = replace_word(lv, tag, w, sexws)	
 			if not rp.lower() == w.lower():
 				if w[0].isupper(): rp = rp.title()
-				if settings.DEBUG: rp += " (" + w + ")"
+				if DEBUG: rp += " (" + w + ")"
 				altered_words[i] = rp	
 				alter_amount += 1
-	#print "Altered %s words" % alter_amount
 	return altered_words
 
 def replace_word(maxlv, tag, word, sexws):
 	'''
-		Checks if there is suitable replace word in iterable.
+		Checks if there is suitable replace word in iterable 'sexws' for 'word'.
 	
 		Parameters:
 		maxlv: 	maximum levenshtein distance to be accepted from word and 
@@ -120,7 +121,23 @@ def replace_word(maxlv, tag, word, sexws):
 	else:							# sense is maintained in the text.
 		return word
 
+# TODO: FIX ME
 def prettify_sentence(replaced_words):
+	'''
+		Prettify given iterable that represents words and part of words and 
+		other characters of the sentence. ie, there can be indeces with only
+		"'ll" or "'" in them.
+		
+		Kinda hackish code, which could be looked into in some point of time.
+		
+		Parameters:
+		replaced_words:	Iterable with sentence's words and other characters. 
+						This iterable is considered to be created by nltk >=2.04
+						part of speech tagging (and replacing some words in it).
+		
+		Returns prettified sentence as one string.
+	'''
+	
 	pretty_sentence = ""
 	last_word = ""
 	enc_hyphen = False
@@ -155,13 +172,13 @@ def visible_html_tag(element):
 		Parameters:
 		element:	element to be checked
 		
-		Returns true if element is visible, otherwise not.
+		Returns True if element is visible, otherwise returns False.
 	'''
 	if element.parent.name in ['style', 'script', '[document]', 'head', 'title']:
 		return False
 	if element.name in ['script']: 
 		return False
-		'''
+		''' 
 		if element.name and 'style' in element.attrs:
 			#print element['style']
 			if re.match(r'display:(\s*)none', element['style']):
@@ -181,7 +198,7 @@ def fix_relative_paths(soup, url):
 		
 		Fixes href's from all tags, and changes all href's from 'a'-tags to be
 		forwarded via the freudifier site. Also changes src's from script-tags
-		and searches all media-tags' contents form r'@inform "(.*)"' patterns
+		and searches all media-tags' contents for r'@inform "(.*)"' patterns
 		which are then changed to absolute paths. Absolute path-changing is done
 		by urlparse.urljoin. (This does not solve all the paths, but some amount
 		none the less)
@@ -234,7 +251,6 @@ def freudify_soup(soup):
 			if t.string == None: continue
 			if isinstance(t, CData): 
 				continue
-			#if t.string.startswith("[CDATA["): continue
 			sentences = nltk.sent_tokenize(t.string)
 			replaced_string = ""
 			for s in sentences:
@@ -261,14 +277,20 @@ def slip(source, url):
 		
 		Returns changed source code.
 	'''
-	soup = bs(source, 'lxml')
 	logger = logging.getLogger('Slipper.slip')
+	if DEBUG: s = timer()
+	soup = bs(source, 'lxml')
+	if DEBUG: logger.info("Souped %s in %s" % (url, str(timer() - s)))
 	
 	try:
+		if DEBUG: t = timer()
 		fix_relative_paths(soup, url)
+		if DEBUG: logger.info("Fixed relative paths of %s in %s" % (url, str(timer() - t)))
+		if DEBUG: t = timer()
 		freudify_soup(soup)
+		if DEBUG: logger.info("Freudified %s in %s" % (url, str(timer() - t)))
 	except:
-		logger.info("utils.slip has blown, with message: \n %s" % traceback.format_exc())
+		logger.info("utils.slip has blown, with stack trace: \n %s" % traceback.format_exc())
 		return None
 		
 	logger.info("Finished tagging source from: %s " % url)

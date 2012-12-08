@@ -10,7 +10,7 @@ TEMPLATE_DEBUG = DEBUG
 # Root folder of the site
 SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
 
-ADMINS = local_conf.ADMINS or (("Simo Linkola", "slinkola@cs.helsinki.fi"))
+ADMINS = local_conf.ADMINS
 
 MANAGERS = ADMINS
 

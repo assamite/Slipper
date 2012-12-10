@@ -12,6 +12,8 @@ Setup:
 
 * Setup GIT, obviously.
 
+* Clone this repository locally.
+
 * Download virtualenv and read the documentation (basically activate/deactivate):
 	http://www.virtualenv.org/en/latest/
 

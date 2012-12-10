@@ -32,6 +32,19 @@ body
 	background-position: right bottom;
 }
 
+#msg_box
+{
+	margin-left: auto;
+	margin-right: auto;
+	font-family: 'Mill';
+   	font-weight: normal;
+   	font-style: normal;
+   	text-align:center;
+   	font-size: 18px;
+   	color: #D9E0E0;
+	
+}
+
 #url_box 
 {	
 	margin-left: auto;

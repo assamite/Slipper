@@ -1,4 +1,4 @@
-DEBUG = False
+DEBUG = True
 
 # tuple of 2-tuples: (name, email)
 ADMINS = (('Siegmund Freud', 'kallon@kutista.ja'))

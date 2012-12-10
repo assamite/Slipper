@@ -10,8 +10,10 @@ from django.core.urlresolvers import reverse
 from forms import URLform
 from utils import get_source, slip
 
-def home(request):
-	context = RequestContext(request, {'form': URLform})
+def home(request, msg = None):
+	if msg is None: msg = "Enter an URL of an english web page."
+	#if not isinstance(msg, str): msg = ""
+	context = RequestContext(request, {'form': URLform, 'msg': msg})
 	return render_to_response('home.html', context)
 
 def freudify(request, url = None):
@@ -23,7 +25,7 @@ def freudify(request, url = None):
 		if form.is_valid():
 			url = request.POST['url']  
 		else:
-			return HttpResponseRedirect(reverse('slip_home_url'))
+			return home(request, "Not a valid POST-data. Check the URL.")
 	if url != None:
 		# hack'n'slash because of mod_wsgi rewrite rules that remove double 
 		# slashes after domain name
@@ -32,10 +34,12 @@ def freudify(request, url = None):
 		
 		source = get_source(url)
 		if source is None: 
-			return HttpResponseRedirect(reverse('slip_home_url'))
+			return home(request, "An error happened while trying to retrieve source from %s" % url)
+		if isinstance(source, int): 
+			return home(request, "%s returned %s" % (url, source))
 		freudified = slip(source, url)
 		if freudified is None:
-			return HttpResponseRedirect(reverse('slip_home_url'))
+			return home(request, "Encountered an error while freudifying %s" % url)
 		return HttpResponse(content=freudified)
 			
-	return HttpResponseRedirect(reverse('slip_home_url'))
+	return HttpResponseRedirect(reverse('slip_base_url'))

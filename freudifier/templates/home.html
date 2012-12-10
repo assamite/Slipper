@@ -10,8 +10,11 @@
 
 	<body>
 		{% block main_content %}
+		<div id="msg_box">
+			{{ msg }}
+		</div>
 		<div id="url_box">  
-		 	<form class="centered" id="url_form" action={% url slip_freudify_url url="" %} enctype="multipart/form-data" method="post">
+		 	<form class="centered" id="url_form" action={% url slip_freudify_url url="freudify" %} enctype="multipart/form-data" method="post">
 				{% csrf_token %}
 				{{ form.as_p }}
 				<div id="freudify_button">

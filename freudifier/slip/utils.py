@@ -22,8 +22,9 @@ repl_tags = {'NN':'n','JJ':'a','VB':'v','RB':'r'}
 
 def get_source(url):
 	'''
-		Gets source code from 'url' and returns it if the page does not return
-		HTML code >= 400. Otherwise returns None.
+		Gets source code from 'url' and returns it. If error happens while 
+		getting the source returns None and if page returns HTTP code >= 400
+		returns the code as int.
 	'''
 	logger.info("Getting source from: %s" % url)
 	try:
@@ -34,7 +35,7 @@ def get_source(url):
 		logger.error("Error stack \n %s" % traceback.format_exc())
 		return None
 	if response.getcode() > 399: 
-		return None
+		return response.getcode()
 	page_source = response.read()
 	return page_source
 

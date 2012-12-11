@@ -1,6 +1,17 @@
+What?
+=====
+
 Small project for "mirroring" websites and adding some "humorous" content to them.
 
+Freudifier is made with Django and the app structure is made to be compatible with Heroku.
+
+Where?
+======
+
 Working version can be found at: http://freudifier.herokuapp.com
+
+How?
+====
 
 Basically the application gets the source code of the typed URL, then parses it
 with beautifulsoup, changes "all" (working on it) the relative paths to absolute

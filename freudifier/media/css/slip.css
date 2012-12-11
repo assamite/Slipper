@@ -40,7 +40,7 @@ body
    	font-weight: normal;
    	font-style: normal;
    	text-align:center;
-   	font-size: 18px;
+   	font-size: 22px;
    	color: #D9E0E0;
 	
 }
@@ -71,13 +71,14 @@ body
    	font-weight: normal;
    	font-style: normal;
    	text-align:center;
-   	font-size: 36px;
+   	font-size: 46px;
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
 	border-radius: 10px;
 	margin-left: auto;
 	margin-right: auto;
 	width: inherit;
+	/*text-shadow: 0 1px 0 #3F526E;*/
 }
 
 #url_form p
@@ -99,7 +100,7 @@ body
    	font-weight: normal;
    	font-style: normal;
    	text-align:center;
-   	font-size: 18px;
+   	font-size: 22px;
    	
    	background-image: linear-gradient(top, #D9E0E0 0%, #F7FCFC 60%);
 	background-image: -o-linear-gradient(top, #D9E0E0 0%, #F7FCFC 60%);

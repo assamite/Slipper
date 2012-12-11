@@ -34,17 +34,20 @@ def get_source(url):
 		logger.error("Could not get source from: %s" % url)
 		logger.error("Error stack \n %s" % traceback.format_exc())
 		return None
-	if response.getcode() > 399: 
+	if response.getcode() and response.getcode() > 399: 
 		return response.getcode()
 	page_source = response.read()
+	if DEBUG: logger.info("Source's length: %s" % str(len(page_source)))
+	if len(page_source) > 10000000: # Magic number
+		return -1
 	return page_source
+
 
 def read_wordnet_sexuality(filepath):
 	'''
 		Reads 'sexuality.txt' and returns it as a dictionary with part of speech
 		tags as keys and words as values. 
 	'''
-	
 	f = open(filepath)
 	s_words = {}
 
@@ -61,6 +64,7 @@ def read_wordnet_sexuality(filepath):
 				s_words[tag] = [w]
 	
 	return s_words
+
 
 def replace_document_words(words, tagged_words, sexws):
 	'''
@@ -98,6 +102,7 @@ def replace_document_words(words, tagged_words, sexws):
 				alter_amount += 1
 	return altered_words
 
+
 def replace_word(maxlv, tag, word, sexws):
 	'''
 		Checks if there is suitable replace word in iterable 'sexws' for 'word'.
@@ -122,6 +127,7 @@ def replace_word(maxlv, tag, word, sexws):
 	else:							# sense is maintained in the text.
 		return word
 
+
 # TODO: FIX ME
 def prettify_sentence(replaced_words):
 	'''
@@ -138,7 +144,6 @@ def prettify_sentence(replaced_words):
 		
 		Returns prettified sentence as one string.
 	'''
-	
 	pretty_sentence = ""
 	last_word = ""
 	enc_hyphen = False
@@ -163,6 +168,7 @@ def prettify_sentence(replaced_words):
 		last_word = w
 	
 	return pretty_sentence
+	
 	
 # TODO: FIX ME, probably not everything is correct in here.	
 def visible_html_tag(element):
@@ -193,6 +199,7 @@ def visible_html_tag(element):
 		return False
 	return True
 
+
 def fix_relative_paths(soup, url):
 	'''
 		Change relative paths from soup's tags to absolute paths. 
@@ -210,7 +217,6 @@ def fix_relative_paths(soup, url):
 		soup: 	HTML soup parsed by BeautifulSoup
 		url:	base url of the site
 	'''
-	
 	# fix relative paths. Horrible code.
 	for t in soup.html.descendants: 
 		if not hasattr(t, 'name'): continue
@@ -232,6 +238,7 @@ def fix_relative_paths(soup, url):
 					for n in re.findall(r"\"(.*)\"", m.group()): 
 						cat.append("@import \"%s\";" % urljoin(url, n))
 			t.string = t.string + " " + " ".join([w for w in cat])
+
 				
 def freudify_soup(soup):
 	'''
@@ -244,7 +251,6 @@ def freudify_soup(soup):
 		
 		Returns freudified soup.
 	'''
-	
 	for t in soup.body.descendants:
 		if not hasattr(t, 'name'): continue
 
@@ -263,6 +269,7 @@ def freudify_soup(soup):
 				replaced_string += " " + prettify_sentence(replaced)
 			if len(replaced_string) > 0:
 				t.string = replaced_string
+
 
 def slip(source, url):
 	'''

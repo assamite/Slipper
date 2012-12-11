@@ -6,7 +6,8 @@ import settings
 # admin.autodiscover()
 
 urlpatterns = patterns('',
-	url(r'^media/(?P<path>.*)$', 'django.views.static.serve',{'document_root': settings.MEDIA_ROOT}, name='stemweb_media_root_url'),
+	url(r'^media/(?P<path>.*)$', 'django.views.static.serve',\
+		{'document_root': settings.MEDIA_ROOT}, name='freudifier_media_root_url'),
     url(r'^', include('freudifier.slip.urls'))
    
 

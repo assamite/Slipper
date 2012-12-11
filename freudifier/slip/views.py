@@ -11,7 +11,7 @@ from forms import URLform
 from utils import get_source, slip
 
 def home(request, msg = None):
-	if msg is None: msg = "Enter an URL of an english web page."
+	if msg is None: msg = "Enter an English web page URL."
 	#if not isinstance(msg, str): msg = ""
 	context = RequestContext(request, {'form': URLform, 'msg': msg})
 	return render_to_response('home.html', context)
@@ -36,6 +36,8 @@ def freudify(request, url = None):
 		if source is None: 
 			return home(request, "An error happened while trying to retrieve source from %s" % url)
 		if isinstance(source, int): 
+			if source == -1: 
+				return home(request, "URL's source is too long.")
 			return home(request, "%s returned %s" % (url, source))
 		freudified = slip(source, url)
 		if freudified is None:

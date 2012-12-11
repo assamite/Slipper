@@ -29,10 +29,11 @@ Setup
 - Download virtualenv and read the documentation (basically activate/deactivate)
 	http://www.virtualenv.org/en/latest/
 
-- Create new virtual environment to this folder by::
+- Create new virtual environment to this folder by:
+	
 	$ virtualenv venv
 	
-.. If you use another name, remember to add it to .gitignore
+	If you use another name, remember to add it to .gitignore
 	
 - Activate virtual environment (type 'deactivate' to exit venv):
 	$ source venv/bin/activate
@@ -45,6 +46,7 @@ Setup
 	2.) Change environment variable $NLTK_DATA to represent nltk_data folder.
 	
 - Go to freudifier-folder:
+	
 	$ python manage.py runserver
 	
 	Stop it with CTRL-C

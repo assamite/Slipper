@@ -3,7 +3,8 @@ Freudian Slipper
 
 Small project for "mirroring" websites and adding some "humorous" content to them.
 
-Freudifier is made with Django and the app structure is made to be compatible with Heroku.
+Freudifier is made with [Django](https://www.djangoproject.com/) 1.3.1 and the app 
+structure is made to be compatible with [Heroku](http://www.heroku.com/). 
 Currently app is coded with python 2.7.1 (though Heroku uses 2.7.2).
 
 Where?
@@ -15,12 +16,14 @@ How?
 ----
 
 Basically the application gets the source code of the typed URL, then parses it
-with beautifulsoup, changes "all" (working on it) relative paths to absolute
+with [beautifulsoup](http://www.crummy.com/software/BeautifulSoup/), changes "all" 
+(working on it) relative paths to absolute
 paths and all the links to go via the application's site. Then it does part of 
-speech tagging of webpage's visible text with nltk and replaces words depending on 
-the part of speech and levenshtein distance to another words from sexuality.txt.
+speech tagging of webpage's visible text with [nltk](http://nltk.org/) and replaces words depending on 
+the part of speech and [Levenshtein distance](http://en.wikipedia.org/wiki/Levenshtein_distance) 
+to some other words from ``freudifier/slip/sexuality.txt``. This is somehow supposed to be funny.
 
-Most original parts of the application can be found from [freudifier/slip/utils.py](https://github.com/assamite/Slipper/blob/master/freudifier/slip/utils.py)
+Most original tarts of the application can be found from [freudifier/slip/utils.py](https://github.com/assamite/Slipper/blob/master/freudifier/slip/utils.py)
 
 Setup
 -----

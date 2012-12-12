@@ -1,10 +1,12 @@
 import os
 import sys
 import local_conf
+import dj_database_url
 
-# Django settings for slipper project.
+# Helper lambda
+env = lambda x, y: os.environ[x] if os.environ.has_key(x) else y
 
-DEBUG = local_conf.DEBUG or False
+DEBUG = env('DJANGO_DEBUG', True)
 TEMPLATE_DEBUG = DEBUG
 
 # Root folder of the site
@@ -14,18 +16,21 @@ ADMINS = local_conf.ADMINS
 
 MANAGERS = ADMINS
 
-'''
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': '',						 # Or path to database file if using sqlite3.
+        'NAME': os.path.join(SITE_ROOT, 'freudifier.db'),	# Or path to database file if using sqlite3.
         'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
     }
 }
-'''
+
+# Parse database configuration from $DATABASE_URL
+if os.environ.has_key('DATABASE_URL'):
+	DATABASES = {'default': dj_database_url.config(default=os.path.join('sqlite:////', SITE_ROOT, 'freudifier.db'))}
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -92,7 +97,7 @@ STATICFILES_FINDERS = (
 )
 
 # me me, pick me, I am unique!
-SECRET_KEY = local_conf.UGH_DAT_VERRY_SECRAT_KEYZ or 'eifnaeifnafinawd22teas'
+SECRET_KEY = env('SECRET_KEY', 'eaiowndadw932terecti0n965qglublrkekelolomg')
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -122,6 +127,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'freudifier.slip'
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
@@ -177,7 +183,3 @@ LOGGING = {
 		}
 	}
 }
-
-# Parse database configuration from $DATABASE_URL
-import dj_database_url
-DATABASES = {'default': dj_database_url.config(default='postgres://localhost')}

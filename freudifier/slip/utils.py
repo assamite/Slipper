@@ -2,23 +2,27 @@ import os
 import re
 import operator
 import urllib2
+import logging
+import traceback
 from timeit import default_timer as timer
 from urlparse import urljoin
+
 from django.core.urlresolvers import reverse
 from bs4 import BeautifulSoup as bs
 from bs4 import CData
 import nltk
 import Levenshtein as lv
+
 from freudifier import settings
+import models
 
 DEBUG = settings.DEBUG
 
-import logging
-import traceback
-
+#	All part of speech tags as keys and words for the tags as values.
+POS = models.Word.pos.all_pos()
 SEXWORDS = {} # Sexuality words dictionary read from sexuality.txt
 logger = logging.getLogger('Slipper.slip')
-repl_tags = {'NN':'n','JJ':'a','VB':'v','RB':'r'}
+repl_tags = {'n':'NN','a':'JJ','v':'VB','r':'RB'}
 
 def get_source(url):
 	'''
@@ -53,16 +57,33 @@ def read_wordnet_sexuality(filepath):
 
 	for l in f.readlines():
 		t = l.split()
-		tag = t[0][0]
+		tag = repl_tags[t[0][0]]
 		ws = t[1:]
 		for w in ws:
 			w = unicode(w.replace('_', ' '), "UTF-8")
+			'''
+			try: 
+				word = ""
+				if tag == 'NN':
+					word = models.Noun.objects.create(word = w)
+				if tag == 'JJ':
+					word = models.Adjective.objects.create(word = w)
+				if tag == 'RB':
+					word = models.Adverb.objects.create(word = w)
+				if tag == 'VB':
+					word = models.Verb.objects.create(word = w)
+				word.approved = True
+				word.save()
+			except: 
+				logger.error("Could not add word to database")
+			'''
 			s_words[w] = tag
 			try:
 				s_words[tag].append(w)
 			except KeyError:
 				s_words[tag] = [w]
 	
+	#models.Word.pos.serialize_words('json', 'test_dump.json')
 	return s_words
 
 
@@ -89,8 +110,7 @@ def replace_document_words(words, tagged_words, sexws):
 		altered_words.append(w)
 		if len(w) < 3: continue
 		tag = tagged_words[i][1][:2]
-		if tag in ["NN", "JJ", "RB"]:
-			tag = repl_tags[tag]
+		if tag in POS.keys():
 			lv = 1
 			if len(w) in maxlv.keys(): lv = maxlv[len(w)]
 			else: lv = 4
@@ -119,7 +139,8 @@ def replace_word(maxlv, tag, word, sexws):
 	'''
 	
 	levenshteins = []
-	for sexw in sexws[tag]:
+	for sexw in POS[tag]:
+		sexw = sexw['word']
 		levenshteins.append((sexw, lv.distance(word, sexw)))
 	levenshteins = sorted(levenshteins, key=operator.itemgetter(1))
 	if levenshteins[0][1] <= maxlv: # Let's take first one always. It's good

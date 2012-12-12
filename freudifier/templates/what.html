@@ -9,30 +9,38 @@
 		<link rel="stylesheet" media="screen" href="http://openfontlibrary.org/face/mill" rel="stylesheet" type="text/css"/>
 	</head>
 
-	<body class="home body">
+	<body class="what body">
 		{% block toolbar %}
 		<div id="menu">
 			<table id="menu_table">
 				<tr>
-					<td><a class="home menu_link" href={% url slip_what_url %}>what</a></td>
-					<td><a class="home menu_link" href={% url slip_contribute_url %}>contribute</a></td>
+					<td><a class="what menu_link" href={% url slip_base_url %}>home</a></td>
+					<td><a class="what menu_link" href={% url slip_contribute_url %}>contribute</a></td>
 				</tr>
 			</table>
 		</div>
 		{% endblock %}
 	
 		{% block main_content %}
-		<div id="msg_box">
-			{{ msg }}
-		</div>
-		<div id="url_box">  
-		 	<form class="centered" id="url_form" action={% url slip_freudify_url url="freudify" %} enctype="multipart/form-data" method="post">
-				{% csrf_token %}
-				{{ form.as_p }}
-				<div id="freudify_button">
-					<input id="submit_button" type="submit" value="freudify" />
+		<div id="about">
+		
+			<div class="column_wrapper">
+				<h1 class="about_header">What is this wizardry?</h3>
+			
+				<div class="left_column">
+					<h2 class="column_header">About</h2>
+					Freudifier is a small Django based application made for purely recreational purposes.
+					Its' origins can be found from the course Laboratory of Computational Creativity and Humour,
+					which took place at University of Helsinki in fall 2012. 
 				</div>
-			</form>
+				<div class="right_column">
+					<h2 class="column_header">Source</h2>
+					You are free to inspect the <a href="http://github.com/assamite/Slipper">source code</a> of 
+					the project. If you want to participate in coding of the project, send me an email to the
+					address shown in footer. 
+				</div>
+			</div>
+			
 		</div>
 		{% endblock %}
 		

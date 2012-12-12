@@ -16,6 +16,10 @@ def home(request, msg = None):
 	context = RequestContext(request, {'form': URLform, 'msg': msg})
 	return render_to_response('home.html', context)
 
+def what(request):
+	context = RequestContext(request)
+	return render_to_response('what.html', context)
+
 def freudify(request, url = None):
 	'''
 		Handles freudifying of the url it gets as POST-data. 

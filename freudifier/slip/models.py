@@ -143,7 +143,7 @@ class Word(models.Model):
 	# Managed for easy POS retrieving.
 	pos = POSManager()
 
-class Noun(Word):
+class Noun(models.Model):
 	''' Database model for nouns. '''
 	# Has this word entry been approved by the staff.
 	approved = models.BooleanField(default = False)
@@ -153,7 +153,7 @@ class Noun(Word):
 	plural = models.CharField(blank = True, max_length = 100, default = '')
 	
 	
-class Adjective(Word):
+class Adjective(models.Model):
 	''' Database model for adjectives. '''
 	# Has this word entry been approved by the staff.
 	approved = models.BooleanField(default = False)
@@ -164,7 +164,7 @@ class Adjective(Word):
 	superlative = models.CharField(blank = True, max_length = 100, default = '')
 	
 	
-class Adverb(Word):
+class Adverb(models.Model):
 	''' Database model for adverbs. '''
 	# Has this word entry been approved by the staff.
 	approved = models.BooleanField(default = False)
@@ -175,7 +175,7 @@ class Adverb(Word):
 	superlative = models.CharField(blank = True, max_length = 100, default = '')
 	
 	
-class Verb(Word):
+class Verb(models.Model):
 	''' Database model for verbs. '''
 	# Has this word entry been approved by the staff.
 	approved = models.BooleanField(default = False)

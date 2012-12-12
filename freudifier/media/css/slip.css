@@ -219,6 +219,7 @@ div#footer_padding
 	min-width: 600px; 
 	margin-left: auto;
 	margin-right: auto;
+	z-index: 75;
 }
 
 .column_wrapper a
@@ -251,7 +252,7 @@ div#footer_padding
 	bottom: 0px;
 	width: 600px;
 	height: 400px;
-	background: #D9E0E0 url('/media/freud_inverse_plain.png') no-repeat;
+	background: transparent url('/media/freud_inverse_plain.png') no-repeat;
 	z-index: 50;
 	-webkit-transition: left 2s;
     -moz-transition: left 2s;
@@ -264,5 +265,4 @@ div#footer_padding
 	-webkit-transition: left 2s;
     -moz-transition: left 2s;
     -o-transition: left 2s;
-	
 }

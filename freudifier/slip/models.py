@@ -111,19 +111,25 @@ class POSManager(models.Manager):
 			return
 			
 		if not isinstance(filepath, str) or filepath == '':
-			filepath = 'freudifier_word_dump.' + file_format
+			filepath = 'freudifier_'
 		
-		if os.path.exists(filepath):	# just in case of major FUU..
-			shutil.move(filepath, filepath + '.bk')
+		#if os.path.exists(filepath):	# just in case of major FUU..
+		#	shutil.move(filepath, filepath + '.bk')
 		
 		serializer = serializers.get_serializer(file_format)
 		Serializer = serializer()
 		f = ''
 		try:
-			out = open(filepath, 'w')
+			out = open(filepath+'noun.'+file_format, 'w')
 			Serializer.serialize(Noun.objects.all(), stream = out)
+			out.close()
+			out = open(filepath+'adjective.'+file_format, 'w')
 			Serializer.serialize(Adjective.objects.all(), stream = out)
+			out.close()
+			out = open(filepath+'adverb.'+file_format, 'w')
 			Serializer.serialize(Adverb.objects.all(), stream = out)
+			out.close()
+			out = open(filepath+'verb.'+file_format, 'w')
 			Serializer.serialize(Verb.objects.all(), stream = out)
 			out.close()
 		except:

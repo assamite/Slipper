@@ -83,7 +83,7 @@ def read_wordnet_sexuality(filepath):
 			except KeyError:
 				s_words[tag] = [w]
 	
-	#models.Word.pos.serialize_words('json', 'test_dump.json')
+	#models.Word.pos.serialize_words(file_format = 'json')
 	return s_words
 
 

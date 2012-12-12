@@ -6,7 +6,7 @@ import dj_database_url
 # Helper lambda
 env = lambda x, y: os.environ[x] if os.environ.has_key(x) else y
 
-DEBUG = env('DJANGO_DEBUG', True)
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 # Root folder of the site

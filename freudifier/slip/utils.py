@@ -204,7 +204,7 @@ def visible_html_tag(element):
 	'''
 	if element.parent.name in ['style', 'script', '[document]', 'head', 'title']:
 		return False
-	if element.name in ['script']: 
+	if element.name in ['script', 'style', '[document]']: 
 		return False
 		''' 
 		if element.name and 'style' in element.attrs:
@@ -246,20 +246,34 @@ def fix_relative_paths(soup, url):
 		if t.name == 'a' and 'href' in t.attrs:
 			t['href'] = reverse('slip_freudify_url', kwargs = { 'url': t['href'] })
 		if 'src' in t.attrs:
-			t['src'] = urljoin(url, t['src'])
+			t['src'] = urljoin(url, t['src'])					
 			
 		# TODO: FIX ME, there must be better way for this.
-		if t.name == 'style' and hasattr(t, 'contents'):
-			cat = []
-			for c in t.contents:
-				# First find the '@import "(.*)"' and then find the pattern 
-				# inside "". Does not actually fix the imports in place, but 
-				# adds absolute paths at the end of the t.string.
-				for m in re.finditer(r"@import(\s+)\"(.*)\"", c):
-					for n in re.findall(r"\"(.*)\"", m.group()): 
-						cat.append("@import \"%s\";" % urljoin(url, n))
-			t.string = t.string + " " + " ".join([w for w in cat])
-
+		if t.name == 'style': 
+			if 'type' in t.attrs:
+				if t['type'].lower() == 'text/css':
+					for c in t.contents:
+						# Find url('xxx') from the source and check if they
+						# have relative paths or not.
+						# TODO: change this to find all url patterns
+						m = re.search(r"(.*)url\(('|\")(?P<url>.*)('|\")\)(.*)", c)
+						if m != None and not m.group('url').startswith('http://'):
+							s = m.start('url')
+							e = m.end('url')
+							m = m.group('url')
+							t.string = t.string[:s] + urljoin(url, m) + t.string[e:]
+			
+			if hasattr(t, 'contents'):
+				cat = []
+				for c in t.contents:
+					# First find the '@import "(.*)"' and then find the pattern 
+					# inside "". Does not actually fix the imports in place, but 
+					# adds absolute paths at the end of the t.string.
+					for m in re.finditer(r"@import(\s+)\"(.*)\"", c):
+						for n in re.findall(r"\"(.*)\"", m.group()): 
+							cat.append("@import \"%s\";" % urljoin(url, n))
+				t.string = t.string + " " + " ".join([w for w in cat])
+			
 				
 def freudify_soup(soup):
 	'''

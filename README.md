@@ -39,7 +39,6 @@ Clone this repository locally.
 
 Download [virtualenv](http://www.virtualenv.org/en/latest/) and read the documentation (basically activate/deactivate)
 	
-
 Create new virtual environment to this folder.
 	
 	$ virtualenv venv
@@ -73,8 +72,27 @@ some time and disc space.
 	
 If you are using [virtualenvwrapper](http://www.doughellmann.com/projects/virtualenvwrapper/) it is recommended to add above mentioned line to ``venv/bin/postactivate``,
 otherwise you have to set the variable every time you activate ``venv``.
+
+Get [SQLite3](http://www.sqlite.org/) or some other database and set it up. 
+If you use other type of database, check Django's documentation about it. Settings up the sqlite3 database is easy.
+
+	$ cd freudifier
+        $ sqlite3 freudifier.db
+        >.quit
+
+**Remember** to add the sqlite database file to ``.gitignore`` if you are using other file place/name than ``freudifier/freudifier.db``.
+The basic configurations in ``settings.py`` point to that file. 
+
+Now you have to create needed database tables and populate tables with initial data.
 	
-Now you should have all the requirements installed and nltk should be able to found needed data.
+	$ python manage.py syncdb
+	$ python manage.py loaddata freudifier_noun.json
+	$ python manage.py loaddata freudifier_adverb.json
+	$ python manage.py loaddata freudifier_adjective.json
+	$ python manage.py loaddata freudifier_verb.json
+	
+Now you should have all the requirements installed, nltk should be able to find needed data and database
+should be ready and filled with initial data.
 After this you just have to run the Django's development server to be able to access site on your
 local browser.
 

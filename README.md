@@ -21,7 +21,7 @@ with [beautifulsoup](http://www.crummy.com/software/BeautifulSoup/), changes "al
 paths and all the links to go via the application's site. Then it does part of 
 speech tagging of webpage's visible text with [nltk](http://nltk.org/) and replaces words depending on 
 the part of speech and [Levenshtein distance](http://en.wikipedia.org/wiki/Levenshtein_distance) 
-to some other words from ``freudifier/slip/sexuality.txt``. This is somehow supposed to be funny.
+to some other words found from the database. This is somehow supposed to be funny.
 
 Most original tarts of the application can be found from [freudifier/slip/utils.py](https://github.com/assamite/Slipper/blob/master/freudifier/slip/utils.py)
 
@@ -29,6 +29,8 @@ Setup
 -----
 
 Here are the setup steps you need to take to make this app running on your local computer.
+Instructions are mainly for Unix based operating system, for Windows you have to figure them
+out yourself, as I don't have much experience in developing on it.
 For more thorough information of used technologies check the technologies' own documentations.
 
 [Setup GIT](https://help.github.com/articles/set-up-git) and python 2.7.x obviously.
@@ -43,7 +45,7 @@ Create new virtual environment to this folder.
 	
 	$ virtualenv venv
 	
-*If you use another name, remember to add it to .gitignore*
+*If you use another name, remember to add it to ``.gitignore``.*
 	
 Activate virtual environment.
 	
@@ -92,7 +94,7 @@ Now you have to create needed database tables and populate tables with initial d
 	$ python manage.py loaddata freudifier_verb.json
 	
 ``syncdb`` will probably ask you about creating a new superuser. This is recommended as you can access
-site_url/admin/ with it.
+http://site.root.url/admin/ with it.
 Now you should have all the requirements installed, nltk should be able to find needed data and database
 should be ready and filled with initial data.
 After this you just have to run the Django's development server to be able to access site on your
@@ -110,7 +112,8 @@ When you are *not* currently anymore running the project you can exit virtual en
 	
 	(venv)$ deactivate
 	
-Hopefully I didn't miss a step in here.
-	
+- S.L 
+
+ps. Hopefully I didn't miss a step in here.	
 
 

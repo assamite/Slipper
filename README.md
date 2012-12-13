@@ -112,7 +112,7 @@ When you are *not* currently anymore running the project you can exit virtual en
 	
 	(venv)$ deactivate
 	
-- S.L 
+-- S.L 
 
 ps. Hopefully I didn't miss a step in here.	
 

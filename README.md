@@ -91,6 +91,8 @@ Now you have to create needed database tables and populate tables with initial d
 	$ python manage.py loaddata freudifier_adjective.json
 	$ python manage.py loaddata freudifier_verb.json
 	
+``syncdb`` will probably ask you about creating a new superuser. This is recommended as you can access
+site_url/admin/ with it.
 Now you should have all the requirements installed, nltk should be able to find needed data and database
 should be ready and filled with initial data.
 After this you just have to run the Django's development server to be able to access site on your

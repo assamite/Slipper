@@ -10,7 +10,7 @@ urlpatterns = patterns('',
     url(r'^$', home, name = 'slip_base_url'),
     url(r'^what/$', what, name = 'slip_what_url'),
     url(r'^contribute/$', home, name = 'slip_contribute_url'),
-    url(r'^(?P<url>.*)$', freudify, name = "slip_freudify_url")
+    url(r'^freudify/(?P<url>.*)$', freudify, name = "slip_freudify_url")
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),

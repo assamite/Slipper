@@ -14,15 +14,12 @@ import nltk
 import Levenshtein as lv
 
 from freudifier import settings
-import models
-
-DEBUG = settings.DEBUG
 
 #	All part of speech tags as keys and words for the tags as values.
-POS = models.Word.pos.all_pos()
-SEXWORDS = {} # Sexuality words dictionary read from sexuality.txt
+from models import POS
+
+DEBUG = settings.DEBUG
 logger = logging.getLogger('Slipper.slip')
-repl_tags = {'n':'NN','a':'JJ','v':'VB','r':'RB'}
 
 def get_source(url):
 	'''
@@ -54,6 +51,7 @@ def read_wordnet_sexuality(filepath):
 	'''
 	f = open(filepath)
 	s_words = {}
+	repl_tags = {'n':'NN','a':'JJ','v':'VB','r':'RB'}
 
 	for l in f.readlines():
 		t = l.split()
@@ -87,15 +85,14 @@ def read_wordnet_sexuality(filepath):
 	return s_words
 
 
-def replace_document_words(words, tagged_words, sexws):
+def replace_document_words(words, tagged_words):
 	'''
 		Iterates over all the words in the document and finds suitable replacing 
-		words for nouns, adjectives and adverbs from 'sexws'
+		words for nouns, adjectives and adverbs from POS-dictionary
 	
 		Parameters
 		words:			iterable of tokenized raw words.
 		tagged_words:	iterable of (raw word, tag) pairs
-		sexws: 			dictionary of sexuality oriented words.
 	
 		Returns altered iterable where some of the words may have been replaced
 		with the words from sexws.
@@ -114,7 +111,7 @@ def replace_document_words(words, tagged_words, sexws):
 			lv = 1
 			if len(w) in maxlv.keys(): lv = maxlv[len(w)]
 			else: lv = 4
-			rp = replace_word(lv, tag, w, sexws)	
+			rp = replace_word(lv, tag, w)	
 			if not rp.lower() == w.lower():
 				if w[0].isupper(): rp = rp.title()
 				if DEBUG: rp += " (" + w + ")"
@@ -123,16 +120,15 @@ def replace_document_words(words, tagged_words, sexws):
 	return altered_words
 
 
-def replace_word(maxlv, tag, word, sexws):
+def replace_word(maxlv, tag, word):
 	'''
-		Checks if there is suitable replace word in iterable 'sexws' for 'word'.
+		Checks if there is suitable replace word from POS[tag] for 'word'.
 	
 		Parameters:
 		maxlv: 	maximum levenshtein distance to be accepted from word and 
 				replaced word
 		tag:	word's position tag (noun, verb, etc)
 		word:	word to find replace for
-		sexws:	iterable to find replace word from.
 		
 		Returns word if no replace word is found, otherwise returns word to 
 		replace original word in the text (closest by levenshtein distance).
@@ -140,7 +136,6 @@ def replace_word(maxlv, tag, word, sexws):
 	
 	levenshteins = []
 	for sexw in POS[tag]:
-		sexw = sexw['word']
 		levenshteins.append((sexw, lv.distance(word, sexw)))
 	levenshteins = sorted(levenshteins, key=operator.itemgetter(1))
 	if levenshteins[0][1] <= maxlv: # Let's take first one always. It's good
@@ -253,8 +248,8 @@ def fix_relative_paths(soup, url):
 			if 'type' in t.attrs:
 				if t['type'].lower() == 'text/css':
 					for c in t.contents:
-						# Find url('xxx') from the source and check if they
-						# have relative paths or not.
+						# Find first url('xxx') from the source and check if it 
+						# is a relative path or not.
 						# TODO: change this to find all url patterns
 						m = re.search(r"(.*)url\(('|\")(?P<url>.*)('|\")\)(.*)", c)
 						if m != None and not m.group('url').startswith('http://'):
@@ -300,7 +295,7 @@ def freudify_soup(soup):
 				if len(tx) < 3: continue
 				tagged_text = nltk.pos_tag(tx)
 				if len(tagged_text) < 3: continue
-				replaced = replace_document_words(tx, tagged_text, SEXWORDS)
+				replaced = replace_document_words(tx, tagged_text)
 				replaced_string += " " + prettify_sentence(replaced)
 			if len(replaced_string) > 0:
 				t.string = replaced_string
@@ -338,5 +333,3 @@ def slip(source, url):
 		
 	logger.info("Finished tagging source from: %s " % url)
 	return soup.prettify()
-
-SEXWORDS = read_wordnet_sexuality(os.path.join(os.path.dirname(__file__), "sexuality.txt"))

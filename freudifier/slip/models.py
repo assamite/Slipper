@@ -5,8 +5,9 @@ import traceback
 import os
 import shutil
 
-logger = logging.getLogger('Slipper.slip')
 
+logger = logging.getLogger('Slipper.slip')
+POS = {}
 
 class Tag(models.Model):
 	'''
@@ -43,33 +44,33 @@ class POSManager(models.Manager):
 		Part of speech manager which has method for all the POS-tags in TAGS.
 	'''
 	def NN(self):
-		return Noun.objects.exclude(word = '').values('word')
+		return [o['word'] for o in Noun.objects.exclude(word = '').values('word')]
 	def NNS(self):
-		return Noun.objects.exclude(plural = '').values('plural')
+		return [o['plural'] for o in  Noun.objects.exclude(plural = '').values('plural')]
 	def JJ(self):
-		return Adjective.objects.exclude(word = '').values('word')
+		return [o['word'] for o in Adjective.objects.exclude(word = '').values('word')]
 	def JJR(self):
-		return Adjective.objects.exclude(comparative = '').values('comparative')
+		return [o['comparative'] for o in Adjective.objects.exclude(comparative = '').values('comparative')]
 	def JJS(self):
-		return Adjective.objects.exclude(superlative = '').values('superlative')
+		return [o['superlative'] for o in Adjective.objects.exclude(superlative = '').values('superlative')]
 	def RB(self):
-		return Adverb.objects.exclude(word = '').values('word')
+		return [o['word'] for o in Adverb.objects.exclude(word = '').values('word')]
 	def RBR(self):
-		return Adverb.objects.exclude(comparative = '').values('comparative')
+		return [o['comparative'] for o in Adverb.objects.exclude(comparative = '').values('comparative')] 
 	def RBS(self):
-		return Adverb.objects.exclude(superlative = '').values('superlative')
+		return [o['superlative'] for o in Adverb.objects.exclude(superlative = '').values('superlative')]
 	def VB(self):
-		return Verb.objects.exclude(word = '').values('word')
+		return [o['word'] for o in Verb.objects.exclude(word = '').values('word')]
 	def VBD(self):
-		return Verb.objects.exclude(past_tense = '').values('past_tense')
+		return [o['past_tense'] for o in Verb.objects.exclude(past_tense = '').values('past_tense')]
 	def VBG(self):
-		return Verb.objects.exclude(present_participle = '').values('present_participle')
+		return [o['present_participle'] for o in Verb.objects.exclude(present_participle = '').values('present_participle')]
 	def VBN(self):
-		return Verb.objects.exclude(past_participle = '').values('past_participle')
+		return [o['past_participle'] for o in Verb.objects.exclude(past_participle = '').values('past_participle')]
 	def VBP(self):
-		return Verb.objects.exclude(non_third_person_singular = '').values('non_third_person_singular')
+		return [o['non_third_person_singular'] for o in Verb.objects.exclude(non_third_person_singular = '').values('non_third_person_singular')]
 	def VBZ(self):
-		return Verb.objects.exclude(third_person_singular = '').values('third_person_singular')
+		return [o['third_person_singular'] for o in Verb.objects.exclude(third_person_singular = '').values('third_person_singular')]
 	
 	def all_pos(self):
 		'''
@@ -118,7 +119,6 @@ class POSManager(models.Manager):
 		
 		serializer = serializers.get_serializer(file_format)
 		Serializer = serializer()
-		f = ''
 		try:
 			out = open(filepath+'noun.'+file_format, 'w')
 			Serializer.serialize(Noun.objects.all(), stream = out)
@@ -139,52 +139,118 @@ class POSManager(models.Manager):
 		
 	
 class Word(models.Model):
-	''' Parent class for all the different word types' models. '''
+	''' Just a wrapper for POSManager '''
 	# Managed for easy POS retrieving.
-	pos = POSManager()
+	posmanager = POSManager()
 
+'''
+	True word categories and their words. 
+	
+	This is now a stupid work around since inheriting Word-model for all the 
+	different part of speeches' meant some quite unexpected results with 
+	POSManager. 
+	
+	TODO: Refactor me
+	
+	Fields:
+	approved: 	is the latest version of the word approved by staff. This should
+				be False if word was altered by user from the web site and true
+				if the word was altered by staff member.
+	category:	"Semantic" category of the word. This defaults to 'sexuality'
+				which is the only category at the moment.
+	word:		Base form of the word, ie. singular for noun, present tense for
+				verb
+	<other>:	These are distinct to the part of speech. 
+'''
 class Noun(models.Model):
-	''' Database model for nouns. '''
-	# Has this word entry been approved by the staff.
+	''' 
+		Database model for nouns. Does not distinguish between proper and normal
+		nouns. Probably there shouldn't be any proper nouns in the database 
+		anyway.
+	'''
 	approved = models.BooleanField(default = False)
-	#  Word's standard form, ie. singular for nouns and present tense for verbs.
-	word = models.CharField(max_length = 100)
 	category = models.CharField(default = 'sexuality', max_length = 100)
-	plural = models.CharField(blank = True, max_length = 100, default = '')
+	word = models.CharField(max_length = 100, unique = True) # NN, NNP
+	plural = models.CharField(blank = True, max_length = 100, default = '') # NNS, NNPS
+	
+	def save(self, *args, **kwargs):
+		''' Override save to automatically update utils.POS '''
+		super(Noun, self).save(*args, **kwargs)
+		obj = self.objects.all()
+		POS['NN'] = [o['word'] for o in obj]
+		POS['NNS'] = [o['plural'] for o in obj if o['plural'] != '']
+		POS['NNP'] = Word.POS['NN']
+		POS['NNPS'] = Word.POS['NNS']
+	
+	class Meta:
+		ordering = ['word']	
 	
 	
 class Adjective(models.Model):
 	''' Database model for adjectives. '''
-	# Has this word entry been approved by the staff.
 	approved = models.BooleanField(default = False)
-	#  Word's standard form, ie. singular for nouns and present tense for verbs.
-	word = models.CharField(max_length = 100)
 	category = models.CharField(default = 'sexuality', max_length = 100)
-	comparative = models.CharField(blank = True, max_length = 100, default = '')
-	superlative = models.CharField(blank = True, max_length = 100, default = '')
+	word = models.CharField(max_length = 100, unique = True) # JJ
+	comparative = models.CharField(blank = True, max_length = 100, default = '') #JJR
+	superlative = models.CharField(blank = True, max_length = 100, default = '') #JJS
 	
+	def save(self, *args, **kwargs):
+		''' Override save to automatically update utils.POS '''
+		super(Adjective, self).save(*args, **kwargs)
+		obj = self.objects.all()
+		POS['JJ'] = [o['word'] for o in obj]
+		POS['JJR'] = [o['comparative'] for o in obj if o['comparative'] != '']
+		POS['JJS'] = [o['superlative'] for o in obj if o['superlative'] != '']
+	
+	class Meta:
+		ordering = ['word']
+		
 	
 class Adverb(models.Model):
 	''' Database model for adverbs. '''
-	# Has this word entry been approved by the staff.
 	approved = models.BooleanField(default = False)
 	category = models.CharField(default = 'sexuality', max_length = 100)
-	#  Word's standard form, ie. singular for nouns and present tense for verbs.
-	word = models.CharField(max_length = 100)
-	comparative = models.CharField(blank = True, max_length = 100, default = '')
-	superlative = models.CharField(blank = True, max_length = 100, default = '')
+	word = models.CharField(max_length = 100, unique = True) # RB
+	comparative = models.CharField(blank = True, max_length = 100, default = '') # RBR
+	superlative = models.CharField(blank = True, max_length = 100, default = '') # RBS
 	
+	def save(self, *args, **kwargs):
+		''' Override save to automatically update utils.POS '''
+		super(Adverb, self).save(*args, **kwargs)
+		obj = self.objects.all()
+		POS['RR'] = [o['word'] for o in obj.values('word')]
+		POS['RBR'] = [o['comparative'] for o in obj if o['comparative'] != '']
+		POS['RBS'] = [o['superlative'] for o in obj if o['superlative'] != '']
+	
+	class Meta:
+		ordering = ['word']
+			
 	
 class Verb(models.Model):
 	''' Database model for verbs. '''
-	# Has this word entry been approved by the staff.
 	approved = models.BooleanField(default = False)
 	category = models.CharField(default = 'sexuality', max_length = 100)
-	#  Word's standard form, ie. singular for nouns and present tense for verbs.
-	word = models.CharField(max_length = 100)
-	past_tense = models.CharField(blank = True, max_length = 100, default = '')
-	past_participle = models.CharField(blank = True, max_length = 100, default = '')
-	present_participle = models.CharField(blank = True, max_length = 100, default = '')
-	third_person_singular = models.CharField(blank = True, max_length = 100, default = '')
-	non_third_person_singular = models.CharField(blank = True, max_length = 100, default = '')
+	word = models.CharField(max_length = 100, unique = True) # VB
+	past_tense = models.CharField(blank = True, max_length = 100, default = '') # VBD
+	past_participle = models.CharField(blank = True, max_length = 100, default = '')  # VBN
+	present_participle = models.CharField(blank = True, max_length = 100, default = '') # VBG, gerund
+	third_person_singular = models.CharField(blank = True, max_length = 100, default = '') # VBZ
+	non_third_person_singular = models.CharField(blank = True, max_length = 100, default = '') # VBP
 	
+	def save(self, *args, **kwargs):
+		''' Override save to automatically update utils.POS '''
+		super(Verb, self).save(*args, **kwargs)
+		obj = self.objects.all()
+		POS['VB'] = [o['word'] for o in obj.values('word')]
+		POS['VBD'] = [o['past_tense'] for o in obj if o['past_tense'] != '']
+		POS['VBN'] = [o['past_participle'] for o in obj if o['past_participle'] != '']
+		POS['VBG'] = [o['present_participle'] for o in obj if o['present_participle'] != '']
+		POS['VBZ'] = [o['third_person_singular'] for o in obj if o['third_person_singular'] != '']
+		POS['VBP'] = [o['non_third_person_singular'] for o in obj if o['non_third_person_singular'] != '']
+
+
+	
+	class Meta:
+		ordering = ['word']
+	
+POS = Word.posmanager.all_pos()	
